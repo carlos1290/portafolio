@@ -19,8 +19,8 @@ export default function Contact() {
                 <a href="mailto:carlosdaniel.gonzalez390@gmail.com">
                   <span aria-hidden="true">✉️</span> carlosdaniel.gonzalez390@gmail.com
                 </a>
-                <a href="tel:+598097145143">
-                  <span aria-hidden="true">📞</span> +598 097 145 143
+                <a href="tel:+59896293903">
+                  <span aria-hidden="true">📞</span> +598 096 293 903
                 </a>
                 <a
                   href="https://www.linkedin.com/in/carlosgonzalez-webdev"
