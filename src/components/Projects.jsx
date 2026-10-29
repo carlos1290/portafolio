@@ -87,8 +87,7 @@ export default function Projects() {
           {projects.map((p, i) => (
             <li
               key={p.id}
-              className="gallery-slide"
-              aria-hidden={i !== index}
+              className={`gallery-slide ${i === index ? 'gallery-slide--on' : ''}`}
             >
               <ProjectCard project={p} onOpen={setSelected} revealIndex={i} />
             </li>

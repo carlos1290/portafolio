@@ -909,11 +909,11 @@ section {
 .gallery-slide {
   flex: 0 0 min(86vw, 360px);
   display: flex;
-  transition: opacity 0.5s ease;
 }
 
-.gallery-slide[aria-hidden='true'] {
-  opacity: 0.55;
+.gallery-slide--on .project-tile {
+  border-color: var(--accent);
+  box-shadow: 0 18px 50px rgba(1, 12, 24, 0.45), 0 0 26px rgba(53, 224, 210, 0.18);
 }
 
 .gallery-slide .project-tile {
