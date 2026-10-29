@@ -1240,40 +1240,8 @@ section {
 }
 
 /* ============ Toast + copiar correo ============ */
-.copy-email-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  align-self: flex-start;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.04em;
-  color: var(--accent);
-  background: rgba(53, 224, 210, 0.08);
-  border: 1px solid var(--glass-border);
-  border-radius: 999px;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
-}
 
-.copy-email-btn:hover {
-  border-color: var(--accent);
-  background: rgba(53, 224, 210, 0.16);
-  transform: translateY(-1px);
-}
 
-.email-web-tag {
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent-ink);
-  background: var(--accent);
-  border-radius: 999px;
-  padding: 0.12rem 0.5rem;
-  white-space: nowrap;
-}
 
 .toast {
   position: fixed;

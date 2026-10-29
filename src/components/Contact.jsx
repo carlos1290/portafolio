@@ -18,7 +18,7 @@ export default function Contact() {
   const copyEmail = async () => {
     try {
       await navigator.clipboard.writeText(EMAIL)
-      showToast('¡Copiado! 📋')
+      showToast('Correo copiado — Gmail se abre en otra pestaña ✉️')
     } catch {
       const ta = document.createElement('textarea')
       ta.value = EMAIL
@@ -29,7 +29,7 @@ export default function Contact() {
       ta.select()
       const ok = document.execCommand('copy')
       document.body.removeChild(ta)
-      showToast(ok ? '¡Copiado! 📋' : 'No se pudo copiar — seleccioná el texto')
+      showToast(ok ? 'Correo copiado — Gmail se abre en otra pestaña ✉️' : 'Gmail se abre en otra pestaña ✉️')
     }
   }
 
@@ -50,13 +50,15 @@ export default function Contact() {
             <div className="glass panel">
               <h3 className="panel-title">Canal de comunicación</h3>
               <div className="contact-socials">
-                <a href={GMAIL_COMPOSE} target="_blank" rel="noreferrer">
+                <a
+                  href={GMAIL_COMPOSE}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={copyEmail}
+                  title="Copia el correo y abre Gmail en una pestaña nueva"
+                >
                   <span aria-hidden="true">✉️</span> {EMAIL}
-                  <span className="email-web-tag">se abre en el navegador</span>
                 </a>
-                <button type="button" className="copy-email-btn" onClick={copyEmail}>
-                  <span aria-hidden="true">⧉</span> Copiar correo al portapapeles
-                </button>
                 <a href="tel:+59896293903">
                   <span aria-hidden="true">📞</span> +598 096 293 903
                 </a>
