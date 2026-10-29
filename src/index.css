@@ -898,30 +898,22 @@ section {
   flex: 1 1 auto;
   min-width: 0;
   gap: 1.5rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-padding-inline: max(1.5rem, calc((100vw - var(--container)) / 2 + 1.5rem));
+  overflow-x: hidden;
+  touch-action: pan-y;
+  scroll-snap-type: none;
   padding: 1rem max(1.5rem, calc((100vw - var(--container)) / 2)) 1.75rem;
   width: 100%;
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent) transparent;
-  overscroll-behavior-x: contain;
-  -webkit-overflow-scrolling: touch;
-}
-
-.gallery-track::-webkit-scrollbar {
-  height: 6px;
-}
-
-.gallery-track::-webkit-scrollbar-thumb {
-  background: rgba(53, 224, 210, 0.5);
-  border-radius: 999px;
+  overscroll-behavior: none;
 }
 
 .gallery-slide {
   flex: 0 0 min(86vw, 360px);
-  scroll-snap-align: start;
   display: flex;
+  transition: opacity 0.5s ease;
+}
+
+.gallery-slide[aria-hidden='true'] {
+  opacity: 0.55;
 }
 
 .gallery-slide .project-tile {
@@ -1079,14 +1071,25 @@ section {
   cursor: default;
 }
 
-.gallery-hint {
-  text-align: center;
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-top: 0.25rem;
+.gallery-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.gallery-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(234, 249, 255, 0.25);
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-dot--on {
+  background: var(--accent);
+  transform: scale(1.35);
+  box-shadow: 0 0 10px rgba(53, 224, 210, 0.6);
 }
 
 /* ============ Modal de proyecto ============ */
@@ -1392,12 +1395,12 @@ section {
   }
 
   .gallery-nav {
-    display: none;
+    width: 38px;
+    height: 38px;
   }
 
-  .gallery-track {
-    scroll-padding-inline: 1.5rem;
-  }
+  .gallery-nav--prev { left: 0.25rem; }
+  .gallery-nav--next { right: 0.25rem; }
 
   .gauge__track {
     height: 90px;

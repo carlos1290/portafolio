@@ -3,35 +3,49 @@ import projectsData from '../data/projects.json'
 import ProjectCard from './ProjectCard.jsx'
 import ProjectModal from './ProjectModal.jsx'
 
+const AUTOPLAY_MS = 3500
+
 export default function Projects() {
   const trackRef = useRef(null)
   const [selected, setSelected] = useState(null)
-  const [edges, setEdges] = useState({ start: true, end: false })
+  const [index, setIndex] = useState(0)
+  const [paused, setPaused] = useState(false)
   const projects = projectsData.proyectos
+  const n = projects.length
+  const reduceMotion = useRef(false)
 
-  const measure = useCallback(() => {
-    const el = trackRef.current
-    if (!el) return
-    setEdges({
-      start: el.scrollLeft <= 4,
-      end: el.scrollLeft + el.clientWidth >= el.scrollWidth - 4,
-    })
-  }, [])
-
-  const scrollByCard = (dir) => {
-    const el = trackRef.current
-    if (!el) return
-    const card = el.querySelector('.project-tile')
-    const gap = 24
-    const step = card ? card.getBoundingClientRect().width + gap : el.clientWidth * 0.8
-    el.scrollBy({ left: dir * step, behavior: 'smooth' })
-  }
+  const goTo = useCallback(
+    (i) => {
+      const el = trackRef.current
+      if (!el) return
+      const target = ((i % n) + n) % n
+      const card = el.querySelector('.project-tile')
+      const step = card ? card.getBoundingClientRect().width + 24 : el.clientWidth * 0.8
+      el.scrollTo({ left: target * step, behavior: reduceMotion.current ? 'auto' : 'smooth' })
+      setIndex(target)
+    },
+    [n]
+  )
 
   useEffect(() => {
-    measure()
-    window.addEventListener('resize', measure)
-    return () => window.removeEventListener('resize', measure)
-  }, [measure])
+    reduceMotion.current = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  }, [])
+
+  useEffect(() => {
+    if (paused || reduceMotion.current) return
+    const t = setInterval(() => goTo(index + 1), AUTOPLAY_MS)
+    return () => clearInterval(t)
+  }, [index, paused, goTo])
+
+  useEffect(() => {
+    const onVis = () => setPaused(document.hidden)
+    document.addEventListener('visibilitychange', onVis)
+    return () => document.removeEventListener('visibilitychange', onVis)
+  }, [])
+
+  const manualNav = (dir) => {
+    goTo(index + dir)
+  }
 
   return (
     <section className="zone" id="proyectos">
@@ -40,18 +54,24 @@ export default function Projects() {
           <span className="zone-marker">−280 m · zona de penumbra</span>
           <h2 className="section-title">Pasarela de proyectos</h2>
           <p className="zone-lead" data-reveal>
-            Reliquias recuperadas de inmersiones anteriores. Deslizá para
-            recorrerlas o abrí la ficha completa.
+            Reliquias recuperadas de inmersiones anteriores. Flotan solas en
+            bucle — usá las flechas para tomar el timón.
           </p>
         </header>
       </div>
 
-      <div className="gallery" data-reveal>
+      <div
+        className="gallery"
+        data-reveal
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+        onFocusCapture={() => setPaused(true)}
+        onBlurCapture={() => setPaused(false)}
+      >
         <button
           type="button"
           className="gallery-nav gallery-nav--prev"
-          onClick={() => scrollByCard(-1)}
-          disabled={edges.start}
+          onClick={() => manualNav(-1)}
           aria-label="Proyecto anterior"
         >
           ‹
@@ -60,13 +80,16 @@ export default function Projects() {
         <ul
           className="gallery-track"
           ref={trackRef}
-          onScroll={measure}
-          tabIndex={0}
           role="region"
-          aria-label="Carrusel de proyectos, desplazamiento horizontal"
+          aria-label="Galería de proyectos en bucle"
+          aria-roledescription="carrusel"
         >
           {projects.map((p, i) => (
-            <li key={p.id} className="gallery-slide">
+            <li
+              key={p.id}
+              className="gallery-slide"
+              aria-hidden={i !== index}
+            >
               <ProjectCard project={p} onOpen={setSelected} revealIndex={i} />
             </li>
           ))}
@@ -75,8 +98,7 @@ export default function Projects() {
         <button
           type="button"
           className="gallery-nav gallery-nav--next"
-          onClick={() => scrollByCard(1)}
-          disabled={edges.end}
+          onClick={() => manualNav(1)}
           aria-label="Proyecto siguiente"
         >
           ›
@@ -84,7 +106,11 @@ export default function Projects() {
       </div>
 
       <div className="container">
-        <p className="gallery-hint">← deslizá o usá las flechas →</p>
+        <div className="gallery-dots" aria-hidden="true">
+          {projects.map((p, i) => (
+            <span key={p.id} className={`gallery-dot ${i === index ? 'gallery-dot--on' : ''}`} />
+          ))}
+        </div>
       </div>
 
       {selected && <ProjectModal project={selected} onClose={() => setSelected(null)} />}
