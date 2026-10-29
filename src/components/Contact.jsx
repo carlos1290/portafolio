@@ -1,4 +1,38 @@
+import { useEffect, useRef, useState } from 'react'
+
+const EMAIL = 'carlosdaniel.gonzalez390@gmail.com'
+const GMAIL_COMPOSE = `https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}`
+
 export default function Contact() {
+  const [toast, setToast] = useState('')
+  const timer = useRef(0)
+
+  useEffect(() => () => clearTimeout(timer.current), [])
+
+  const showToast = (msg) => {
+    setToast(msg)
+    clearTimeout(timer.current)
+    timer.current = setTimeout(() => setToast(''), 2600)
+  }
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(EMAIL)
+      showToast('¡Copiado! 📋')
+    } catch {
+      const ta = document.createElement('textarea')
+      ta.value = EMAIL
+      ta.setAttribute('readonly', '')
+      ta.style.position = 'fixed'
+      ta.style.opacity = '0'
+      document.body.appendChild(ta)
+      ta.select()
+      const ok = document.execCommand('copy')
+      document.body.removeChild(ta)
+      showToast(ok ? '¡Copiado! 📋' : 'No se pudo copiar — seleccioná el texto')
+    }
+  }
+
   return (
     <section className="zone" id="contacto">
       <div className="container">
@@ -16,9 +50,13 @@ export default function Contact() {
             <div className="glass panel">
               <h3 className="panel-title">Canal de comunicación</h3>
               <div className="contact-socials">
-                <a href="mailto:carlosdaniel.gonzalez390@gmail.com">
-                  <span aria-hidden="true">✉️</span> carlosdaniel.gonzalez390@gmail.com
+                <a href={GMAIL_COMPOSE} target="_blank" rel="noreferrer">
+                  <span aria-hidden="true">✉️</span> {EMAIL}
+                  <span className="email-web-tag">se abre en el navegador</span>
                 </a>
+                <button type="button" className="copy-email-btn" onClick={copyEmail}>
+                  <span aria-hidden="true">⧉</span> Copiar correo al portapapeles
+                </button>
                 <a href="tel:+59896293903">
                   <span aria-hidden="true">📞</span> +598 096 293 903
                 </a>
@@ -49,7 +87,16 @@ export default function Contact() {
           <form
             className="contact-form glass panel"
             data-reveal
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={(e) => {
+              e.preventDefault()
+              const data = new FormData(e.currentTarget)
+              const body = `${data.get('message')}\n\n— ${data.get('name')} (${data.get('email')})`
+              window.open(
+                `${GMAIL_COMPOSE}&su=${encodeURIComponent('Hola Carlos — desde tu portafolio')}&body=${encodeURIComponent(body)}`,
+                '_blank',
+                'noopener'
+              )
+            }}
           >
             <div>
               <label htmlFor="name">Nombre</label>
@@ -87,6 +134,10 @@ export default function Contact() {
             </button>
           </form>
         </div>
+      </div>
+
+      <div className={`toast ${toast ? 'toast--show' : ''}`} role="status" aria-live="polite">
+        {toast}
       </div>
     </section>
   )

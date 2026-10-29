@@ -4,6 +4,7 @@ const links = [
   { href: '#superficie', label: 'Superficie' },
   { href: '#bitacora', label: 'Bitácora' },
   { href: '#arsenal', label: 'Arsenal' },
+  { href: '#proyectos', label: 'Proyectos' },
   { href: '#mision', label: 'Misión' },
   { href: '#contacto', label: 'Contacto' },
 ]

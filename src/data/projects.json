@@ -1,0 +1,71 @@
+{
+  "proyectos": [
+    {
+      "id": "dashboards-bi",
+      "titulo": "Tableros de control BI",
+      "rol": "Desarrollador Jr. / Analista de datos",
+      "descripcion": "Diseño y desarrollo de tableros de control interactivos en Power BI para la toma de decisiones empresariales a partir de encuestas y marcos muestrales depurados.",
+      "habilidades_tecnicas": ["Power BI", "DAX", "SPSS", "Excel", "Depuración de datos"],
+      "captura_o_demo": null,
+      "enlaces": {
+        "demo": null,
+        "codigo": null
+      },
+      "arquitectura": "Pipeline: bases de encuestas → depuración acumulativa en SPSS/Excel → modelo relacional → semáforos e interactividad en Power BI, publicado en workspace corporativo.",
+      "metricas": [
+        { "valor": "100%", "label": "encuestas sistematizadas" },
+        { "valor": "Semanal", "label": "frecuencia de reportes" }
+      ]
+    },
+    {
+      "id": "georreferenciacion",
+      "titulo": "Control de calidad georreferenciado",
+      "rol": "Practicante técnico — QA de datos",
+      "descripcion": "Sistema de verificación de encuestas mediante análisis de georreferenciación con Google Maps, detectando inconsistencias de campo y generando reportes detallados de testing.",
+      "habilidades_tecnicas": ["Google Maps", "QA", "Test Cases", "Reporte de bugs", "Google Sheets"],
+      "captura_o_demo": null,
+      "enlaces": {
+        "demo": null,
+        "codigo": null
+      },
+      "arquitectura": "Coordenadas de campo → validación espacial contra marcos muestrales → marcado de outliers → informe de no conformidades para el equipo de campo.",
+      "metricas": [
+        { "valor": "+300", "label": "casos auditados" },
+        { "valor": "1er paso", "label": "detección temprana de errores" }
+      ]
+    },
+    {
+      "id": "portafolio-iceberg",
+      "titulo": "Portafolio iceberg inmersivo",
+      "rol": "Frontend Developer (diseño y desarrollo)",
+      "descripcion": "Portafolio con narrativa de buceo: un iceberg que se hunde con el scroll, HUD de profundidad y zonas oceánicas que revelan el CV. Este mismo sitio que estás viendo.",
+      "habilidades_tecnicas": ["React", "JavaScript", "CSS3", "Scroll-driven animation", "Accessibility"],
+      "captura_o_demo": null,
+      "enlaces": {
+        "demo": null,
+        "codigo": "https://github.com/carlos1290/portafolio"
+      },
+      "arquitectura": "Vite + React sin dependencias de animación: una única variable CSS --p alimentada por rAF scroll listener gobierna la escena fija (olas, rayos, iceberg SVG) y el degradado de profundidad; reveals con IntersectionObserver y prefers-reduced-motion respetado.",
+      "metricas": [
+        { "valor": "0", "label": "librerías de animación externas" },
+        { "valor": "~51 kB", "label": "JS gzip" }
+      ]
+    },
+    {
+      "id": "apps-web-senpai",
+      "titulo": "Apps web — formación aplicada",
+      "rol": "Estudiante desarrollador",
+      "descripcion": "Proyectos prácticos del ecosistema web (React, HTML5, CSS3, JavaScript) desde la formación en Senpai Academy, incluyendo componentes interactivos y consumo de APIs.",
+      "habilidades_tecnicas": ["React", "JavaScript", "HTML5", "CSS3"],
+      "captura_o_demo": null,
+      "enlaces": {
+        "demo": null,
+        "codigo": null
+      },
+      "arquitectura": "Componentización con React, estado local con hooks y estilos modulares.",
+      "metricas": [
+        { "valor": "9 hrs", "label": "formación intensiva" }
+      ]
+    }
+  ]
+}
