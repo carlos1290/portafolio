@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://carlos1290.github.io/portafolio/sitemap.xml

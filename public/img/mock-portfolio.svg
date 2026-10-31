@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" font-family="Sora, sans-serif">
+  <rect width="720" height="340" fill="#02131f"/>
+  <rect width="720" height="120" fill="#a8dcf0"/>
+  <rect y="120" width="720" height="220" fill="#0e6a8f"/>
+  <!-- iceberg -->
+  <polygon points="480,30 530,120 430,120" fill="#f4fdff"/>
+  <polygon points="480,30 530,120 480,120" fill="#8fc7e3"/>
+  <polygon points="430,124 530,124 560,180 500,270 440,300 390,240 380,160" fill="#bfeefc" opacity="0.3"/>
+  <line x1="0" y1="122" x2="720" y2="122" stroke="#eaf9ff" stroke-width="3" opacity="0.7"/>
+  <!-- textos -->
+  <text x="60" y="80" fill="#04222b" font-size="34" font-weight="800">Carlos Gonzalez</text>
+  <text x="60" y="104" fill="#0a5f7a" font-size="13">0 m · en la superficie — el 10% del iceberg</text>
+  <rect x="60" y="160" width="130" height="34" rx="17" fill="#04222b"/>
+  <text x="125" y="182" fill="#35e0d2" font-size="13" text-anchor="middle" font-family="IBM Plex Mono, monospace">Sumergirme ↓</text>
+  <rect x="206" y="160" width="150" height="34" rx="17" fill="none" stroke="#04222b" stroke-width="1.5"/>
+  <text x="281" y="182" fill="#04222b" font-size="13" text-anchor="middle" font-family="IBM Plex Mono, monospace">Descargar CV (PDF)</text>
+  <!-- gauge -->
+  <rect x="40" y="240" width="6" height="70" rx="3" fill="#eaf9ff" opacity="0.25"/>
+  <rect x="40" y="270" width="6" height="40" rx="3" fill="#35e0d2"/>
+  <text x="58" y="284" fill="#35e0d2" font-size="14" font-family="IBM Plex Mono, monospace">−180 m</text>
+  <text x="58" y="302" fill="#9fd8e8" font-size="10" font-family="IBM Plex Mono, monospace">ZONA CREPUSCULAR</text>
+  <!-- burbujas -->
+  <g fill="#eaf9ff" opacity="0.5">
+    <circle cx="600" cy="200" r="4"/><circle cx="620" cy="250" r="3"/><circle cx="590" cy="290" r="5"/><circle cx="660" cy="180" r="3"/>
+  </g>
+</svg>

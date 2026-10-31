@@ -4,6 +4,9 @@ node_modules/
 # Build de producción (generado por CI, ya no se rastrea)
 dist/
 
+# Cobertura de tests
+coverage/
+
 # Logs y temporales
 *.log
 .DS_Store
@@ -14,3 +17,8 @@ dist/
 
 # Artefactos del agente
 .qoder/
+.lighthouseci/
+
+# Tests
+playwright-report/
+test-results/

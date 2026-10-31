@@ -2,6 +2,10 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; frame-ancestors 'none'"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
@@ -27,7 +31,10 @@
     <meta property="og:image" content="https://carlos1290.github.io/portafolio/og-image.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Carlos Gonzalez — Ingeniería en Computación · Dev Web Jr. / QA" />
+    <meta
+      property="og:image:alt"
+      content="Carlos Gonzalez — Ingeniería en Computación · Dev Web Jr. / QA"
+    />
     <meta property="og:locale" content="es_UY" />
     <meta property="og:site_name" content="Portafolio Carlos Gonzalez" />
 
@@ -39,7 +46,10 @@
       content="Portafolio interactivo con un iceberg que se hunde al hacer scroll: React, Power BI, QA y datos."
     />
     <meta name="twitter:image" content="https://carlos1290.github.io/portafolio/og-image.png" />
-    <meta name="twitter:image:alt" content="Carlos Gonzalez — Ingeniería en Computación · Dev Web Jr. / QA" />
+    <meta
+      name="twitter:image:alt"
+      content="Carlos Gonzalez — Ingeniería en Computación · Dev Web Jr. / QA"
+    />
 
     <!-- Datos estructurados -->
     <script type="application/ld+json">
@@ -49,8 +59,6 @@
         "name": "Carlos Gonzalez",
         "url": "https://carlos1290.github.io/portafolio/",
         "image": "https://carlos1290.github.io/portafolio/og-image.png",
-        "email": "carlosdaniel.gonzalez390@gmail.com",
-        "telephone": "+598 096 293 903",
         "jobTitle": "Desarrollador Web Jr. / QA",
         "description": "Estudiante de Ingeniería en Computación con foco en optimización de sistemas, desarrollo web con React, Business Intelligence con Power BI y aseguramiento de calidad.",
         "address": {
@@ -63,23 +71,83 @@
           { "@type": "EducationalOrganization", "name": "ÁNMA TEC — Bachillerato Tecnológico TIC" }
         ],
         "knowsAbout": [
-          "JavaScript", "React", "HTML5", "CSS3", "Power BI", "SPSS",
-          "Depuración de datos", "QA", "Test Cases", "Metodologías ágiles Scrum"
+          "JavaScript",
+          "React",
+          "HTML5",
+          "CSS3",
+          "Power BI",
+          "SPSS",
+          "Depuración de datos",
+          "QA",
+          "Test Cases",
+          "Metodologías ágiles Scrum"
         ],
         "sameAs": ["https://www.linkedin.com/in/carlosgonzalez-webdev"]
       }
     </script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Sora:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
     <title>Carlos Gonzalez — El 90% bajo el agua</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Prerenderizado estático del Hero: contenido visible antes de que
+           hydrate React (y respaldo si el bundle falla). React lo reemplaza. -->
+      <section class="hero" id="superficie">
+        <div class="container hero-inner">
+          <p class="hero-eyebrow">0 m · en la superficie</p>
+          <h1 class="hero-title">Carlos <span>Gonzalez</span></h1>
+          <p class="hero-subtitle">
+            Estudiante de Ingeniería en Computación · Desarrollador Web Jr. / QA. Lo que ves aquí es
+            solo el 10% del iceberg. Sigue bajando.
+          </p>
+          <div class="hero-actions">
+            <a href="#bitacora" class="btn btn-dive">Sumergirme ↓</a>
+            <a
+              href="/portafolio/cv-carlos-gonzalez.pdf"
+              class="btn btn-outline"
+              download="CV-Carlos-Gonzalez.pdf"
+              >⤓ Descargar CV (PDF)</a
+            >
+            <a href="#contacto" class="btn btn-ghost">Contacto</a>
+          </div>
+        </div>
+      </section>
+    </div>
+    <noscript>
+      <div class="noscript-panel">
+        <h2>Carlos Gonzalez — Portafolio</h2>
+        <p>
+          Este sitio es una experiencia interactiva que necesita JavaScript para sumergirte en el
+          iceberg. Sin JavaScript, acá va el resumen esencial:
+        </p>
+        <ul>
+          <li>
+            <strong>Rol:</strong> Desarrollador Web Jr. / QA — estudiante de Ingeniería en
+            Computación (UDELAR, 2025–actualidad).
+          </li>
+          <li>
+            <strong>Experiencia:</strong> Equipos Consultores (2023–2024) — depuración de datos,
+            tableros de control en Power BI, QA y georreferenciación de encuestas.
+          </li>
+          <li>
+            <strong>Stack:</strong> JavaScript, React, HTML5, CSS3, Power BI, SPSS, Excel, QA / Test
+            Cases.
+          </li>
+          <li>
+            <strong>Formaciones:</strong> Senpai Academy (Apps Web), Hattrick (UX/QA), Evertec/ÁNMA
+            (Scrum).
+          </li>
+          <li>
+            <strong>Contacto:</strong> carlosdaniel.gonzalez390 [arroba] gmail [punto] com · +598
+            096 293 903 (con espacios) · linkedin.com/in/carlosgonzalez-webdev
+          </li>
+        </ul>
+        <p>
+          <a href="/portafolio/cv-carlos-gonzalez.pdf" download="CV-Carlos-Gonzalez.pdf"
+            >Descargar CV en PDF</a
+          >
+        </p>
+      </div>
+    </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

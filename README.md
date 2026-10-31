@@ -4,7 +4,9 @@ Portafolio web interactivo con la metáfora de un **iceberg**: solo el 10% se ve
 desde la superficie, y a medida que hacés scroll te sumergís en un océano
 animado que revela distintas capas de mi perfil profesional.
 
- **Sitio en vivo:** https://carlos1290.github.io/portafolio/
+🌐 **Sitio en vivo:** https://carlos1290.github.io/portafolio/
+
+![Vista previa del portafolio](public/og-image.png)
 
 ---
 
@@ -16,7 +18,12 @@ animado que revela distintas capas de mi perfil profesional.
 - [Las zonas de profundidad](#las-zonas-de-profundidad)
 - [La pasarela de proyectos](#la-pasarela-de-proyectos)
 - [Contacto](#contacto)
-- [Accesibilidad y rendimiento](#accesibilidad-y-rendimiento)
+- [Internacionalización (ES/EN)](#internacionalización-esen)
+- [SEO y metadatos](#seo-y-metadatos)
+- [Seguridad (CSP) y privacidad](#seguridad-csp-y-privacidad)
+- [Accesibilidad](#accesibilidad)
+- [Rendimiento](#rendimiento)
+- [Calidad: lint, tests y Lighthouse CI](#calidad-lint-tests-y-lighthouse-ci)
 - [Desarrollo local](#desarrollo-local)
 - [Despliegue continuo con GitHub Pages](#despliegue-continuo-con-github-pages)
 - [Personalización](#personalización)
@@ -25,19 +32,19 @@ animado que revela distintas capas de mi perfil profesional.
 
 ## Stack tecnológico
 
-| Capa | Tecnología |
-|------|------------|
-| Framework | React 18 |
-| Build / dev server | Vite 5 |
-| Estilos | CSS3 puro (custom properties, sin frameworks ni Tailwind) |
-| Animaciones | CSS keyframes + scroll-driven variables (cero librerías de animación) |
-| Lenguaje | JavaScript (ESM, JSX) |
-| Hosting | GitHub Pages vía GitHub Actions |
+| Capa               | Tecnología                                                             |
+| ------------------ | ---------------------------------------------------------------------- |
+| Framework          | React 18                                                               |
+| Build / dev server | Vite 5                                                                 |
+| Estilos            | CSS3 puro (custom properties, sin frameworks)                          |
+| Fuentes            | Self-hosted woff2 (Unbounded, Sora, IBM Plex Mono — subconjunto latin) |
+| Animaciones        | CSS keyframes + scroll-driven variables (cero librerías de animación)  |
+| Iconografía        | Set SVG propio y uniforme (`Icons.jsx`, stroke `currentColor`)         |
+| Tests              | Vitest + React Testing Library (unitarios) · Playwright (e2e)          |
+| Calidad            | ESLint (react, react-hooks, jsx-a11y) + Prettier + Husky pre-commit    |
+| CI/CD              | GitHub Actions → GitHub Pages, con gate de Lighthouse CI               |
 
-**Sin dependencias de runtime además de React**: las olas, el iceberg, las
-burbujas y los rayos son SVG + CSS; la lógica de scroll son ~60 líneas de JS.
-
----
+**Sin dependencias de runtime además de React.**
 
 ## Cómo funciona la experiencia
 
@@ -54,131 +61,175 @@ scroll ──▶ rAF ──▶ documentElement.style.setProperty('--p', 0..1)
   (se hunde)       (sube y sale)      océano (oscurece)  rayos/burbujas
 ```
 
-- **`<Ocean />`** (`components/Ocean.jsx`): escena fija (`position: fixed`,
-  `z-index: -1`) que vive detrás del contenido: cielo, agua con degradado de
-  profundidad, olas SVG animadas, rayos de luz, 16 burbujas y 24 partículas
-  bioluminiscentes. El iceberg es un SVG con dos masas: la punta visible (10%)
-  y la masa sumergida (90%), que se hunde con `top: calc(... var(--p) ...)`.
-- **`<DepthGauge />`**: HUD estilo sonar (abajo a la izquierda) que muestra la
-  profundidad actual (0 → −900 m), la zona en la que estás y una barra de
-  inmersión. Se actualiza por manipulación DOM directa desde el mismo rAF, sin
-  re-renders de React.
-- **Reveals**: `useReveal()` usa un `IntersectionObserver` que agrega
-  `.is-visible` a los elementos con `data-reveal` (fade + slide-up escalonado).
+- **`<Ocean />`**: escena fija (`position: fixed`, `z-index: -1`) detrás del
+  contenido: cielo, agua con degradado de profundidad, olas SVG, rayos de luz,
+  16 burbujas y 24 partículas bioluminiscentes. El iceberg es un SVG con dos
+  masas: la punta visible (10%) y la sumergida (90%).
+- **`<DepthGauge />`**: HUD estilo sonar (0 → −900 m) con la zona actual y
+  barra de inmersión; se actualiza por DOM directo desde el rAF, sin re-renders.
+- **Reveals**: `useReveal()` (IntersectionObserver) agrega `.is-visible` a los
+  `[data-reveal]` con fade + slide-up escalonado.
+- **Fallback sin JS**: el Hero está prerenderizado dentro de `#root` y hay un
+  bloque `<noscript>` con el resumen completo del perfil; los estados ocultos
+  de `[data-reveal]` solo aplican con la clase `.js` activa.
 
 ## Estructura del proyecto
 
 ```
-├── .github/workflows/deploy-pages.yml   # CI/CD → GitHub Pages
-├── index.html                           # Fuentes (Unbounded, Sora, IBM Plex Mono)
-├── vite.config.js                       # base: '/portafolio/' para Pages
+├── .github/workflows/deploy.yml         # CI/CD → GitHub Pages + gate LHCI
+├── .husky/pre-commit                    # lint-staged antes de cada commit
+├── .lighthouserc.json                   # umbrales perf ≥80 · a11y ≥85
+├── eslint.config.js / .prettierrc       # calidad de código
+├── index.html                           # SEO/OG/Twitter/canonical/CSP/JSON-LD + prerender
+├── vite.config.js                       # base: '/portafolio/'
+├── public/
+│   ├── cv-carlos-gonzalez.pdf           # CV descargable
+│   ├── favicon.svg / favicon-32.png / apple-touch-icon.png
+│   ├── og-image.svg / og-image.png      # imagen social 1200×630
+│   ├── robots.txt / sitemap.xml / 404.html
+│   └── img/mock-*.svg                   # capturas de la pasarela
 ├── src/
-│   ├── main.jsx / App.jsx               # Composición + hooks de scroll
-│   ├── index.css                        # Tema completo (custom properties)
+│   ├── main.jsx / App.jsx               # clase .js + I18nProvider + hooks de scroll
+│   ├── index.css                        # tema completo
+│   ├── assets/fonts/                    # woff2 latin self-hosted
 │   ├── data/
-│   │   └── projects.json                # ← fichas de la pasarela (editable)
+│   │   ├── projects.json                # fichas de la pasarela (ES + campos _en)
+│   │   └── i18n.json                    # diccionario ES/EN de toda la UI
 │   ├── hooks/
-│   │   └── useScrollDepth.js            # --p, HUD, zonas, reveals
-│   └── components/
-│       ├── Ocean.jsx                    # Escena marina fija
-│       ├── DepthGauge.jsx               # HUD de profundidad
-│       ├── Navbar.jsx / Footer.jsx
-│       ├── Hero.jsx                     # Superficie (0 m)
-│       ├── About.jsx                    # Bitácora + educación
-│       ├── Skills.jsx                   # Competencias + formaciones
-│       ├── Projects.jsx                 # Pasarela (carrusel flotante)
-│       ├── ProjectCard.jsx              # Ficha individual
-│       ├── ProjectModal.jsx             # Ficha extendida (overlay)
-│       ├── Experience.jsx               # Equipos Consultores
-│       └── Contact.jsx                  # Contacto + referencia
+│   │   ├── useScrollDepth.js            # --p, HUD, zonas, pausa de escena, reveals
+│   │   ├── useScrollDepth.test.jsx      # unitarios (Vitest + RTL)
+│   │   └── useI18n.jsx                  # provider de idioma con persistencia
+│   └── components/                      # Ocean, DepthGauge, secciones, galería, Icons
+└── e2e/critical-path.spec.js            # Playwright: ruta crítica completa
 ```
 
 ## Las zonas de profundidad
 
-El contenido del CV está mapeado a zonas reales del océano:
-
-| Zona | Profundidad | Sección | Contenido |
-|------|-------------|---------|-----------|
-| Superficie | 0 m | Hero | Presentación — "lo que ves es solo el 10%" |
-| Zona iluminada | −040 m | Bitácora de buceo | Sobre mí + educación (UDELAR, ÁNMA TEC) |
-| Zona crepuscular | −180 m | El arsenal | Competencias técnicas y transversales + formaciones (Senpai, Hattrick, Evertec/Scrum) |
-| Zona de penumbra | −280 m | Pasarela de proyectos | Carrusel de proyectos |
-| Zona de medianoche | −450 m | Expedición | Experiencia en Equipos Consultores (BI, QA, georreferenciación) |
-| El abismo | −900 m | Fondo del océano | Contacto + referencia profesional |
+| Zona               | Profundidad | Sección  | Contenido                               |
+| ------------------ | ----------- | -------- | --------------------------------------- |
+| Superficie         | 0 m         | Hero     | Presentación + descarga de CV           |
+| Zona iluminada     | −040 m      | Bitácora | Sobre mí + educación (UDELAR, ÁNMA TEC) |
+| Zona crepuscular   | −180 m      | Arsenal  | Competencias + formaciones              |
+| Zona de penumbra   | −280 m      | Pasarela | Carrusel de proyectos                   |
+| Zona de medianoche | −450 m      | Misión   | Equipos Consultores (BI, QA, geo)       |
+| El abismo          | −900 m      | Contacto | Contacto + referencia profesional       |
 
 ## La pasarela de proyectos
 
-`Projects.jsx` implementa un carrusel "flotante":
-
-- **Autoplay en bucle**: avanza una ficha cada 3,5 s (`AUTOPLAY_MS`) con
-  transición suave; al llegar al final vuelve al inicio.
-- **Navegación solo por flechas** ‹/›: el arrastre manual y la scrollbar están
-  deshabilitados (`overflow-x: hidden` + `touch-action: pan-y`).
-- **Pausas inteligentes**: el autoplay se detiene con hover sobre la galería,
-  con foco de teclado en las flechas, al ocultar la pestaña
-  (`visibilitychange`) y permanentemente con `prefers-reduced-motion`.
-- **Ficha activa** destacada con borde turquesa + glow; indicador de puntos
-  (solo visual) debajo.
-- **Modal de detalle** (`ProjectModal.jsx`): accesible — `role="dialog"`,
-  `aria-modal`, foco inicial en el botón cerrar, cierre con `Escape` o click
-  en el backdrop, scroll del body bloqueado. Muestra resumen, arquitectura,
-  métricas clave y enlaces.
+- **Autoplay en bucle** (3,5 s por ficha, `AUTOPLAY_MS`) con transición suave.
+- **Navegación por flechas ‹/›** y puntos indicadores (botones accesibles con
+  `aria-label`/`aria-current`); sin scrollbar ni arrastre manual.
+- **Pausa automática**: hover, foco de teclado, pestaña oculta y
+  `prefers-reduced-motion`.
+- **Modal de ficha completa**: `role="dialog"`, **focus trap** (Tab/Shift+Tab
+  ciclan dentro), cierre con Escape/backdrop/botón y **devolución del foco** al
+  activador (WCAG 2.4.3). Muestra resumen, arquitectura, métricas y enlaces.
+- **Capturas**: mockups SVG propios en `public/img/` referenciados desde
+  `projects.json` (`captura_o_demo`); aceptan imágenes reales sin tocar código.
 
 ## Contacto
 
-- El correo es **una sola etiqueta**: al hacer clic copia el mail al
-  portapapeles (con toast de confirmación `role="status"`) y abre **Gmail web**
-  en una pestaña nueva (`https://mail.google.com/mail/?view=cm&fs=1&to=…`),
-  evitando la app nativa de correo.
-- El formulario no tiene backend: al enviarlo compone el mail en Gmail con
-  asunto y cuerpo prellenados desde los campos.
-- Fallback de copiado con `document.execCommand('copy')` para navegadores sin
-  Clipboard API.
+- Una sola etiqueta con el mail: al hacer clic **copia el correo** (Clipboard
+  API, con toast `role="status"`) y **abre Gmail web** en otra pestaña — sin
+  app nativa y sin botones separados.
+- El formulario compone el mail en Gmail con asunto y cuerpo prellenados.
 
-## Accesibilidad y rendimiento
+## Internacionalización (ES/EN)
 
-- `prefers-reduced-motion`: desactiva olas, rayos, iceberg flotando, burbujas,
-  autoplay del carrusel y animaciones del modal.
-- HTML semántico (`section`, `article`, `nav`, `blockquote`), jerarquía de
-  encabezados, `:focus-visible` con outline turquesa, labels reales en el
-  formulario, contraste AA sobre fondos oscuros.
-- Escena fija con `pointer-events: none` y `aria-hidden="true"`.
-- Bundle: ~54 kB JS gzip + ~5 kB CSS gzip, sin librerías extra. El scroll
-  listener usa un único `requestAnimationFrame` y escribe solo propiedades CSS.
+- Conmutador 🌐 en la barra de navegación; diccionario completo en
+  `src/data/i18n.json` (incluye nombres de zonas del HUD).
+- Los proyectos se traducen con campos `*_en` en `projects.json`.
+- La preferencia se persiste en `localStorage` y sincroniza `<html lang>`.
+
+## SEO y metadatos
+
+- Meta description, author, theme-color y `canonical`.
+- Open Graph (`og:title/description/image/url/locale`) con imagen 1200×630 y
+  Twitter Card `summary_large_image`.
+- JSON-LD `schema.org/Person` (educación, skills, `sameAs` LinkedIn).
+- `robots.txt`, `sitemap.xml` y `404.html` personalizada.
+- Pendiente manual: dar de alta la URL en Google Search Console y enviar el
+  sitemap.
+
+## Seguridad (CSP) y privacidad
+
+- Meta `Content-Security-Policy` estricta: `default-src 'self'`, sin
+  `connect-src`, sin third-parties (las fuentes son locales).
+- Email y teléfono se ensamblan en tiempo de ejecución en `Contact.jsx`; el
+  HTML fuente y el JSON-LD no contienen la PII completa en texto plano.
+
+## Accesibilidad
+
+- WCAG 2.2 AA: foco visible, focus trap en modal con restauración de foco,
+  piso de fuente 0.75rem (zoom 200 %), HTML semántico, labels reales,
+  `aria-live` en el toast, iconos SVG `aria-hidden` junto a texto visible.
+- `prefers-reduced-motion` desactiva olas, rayos, burbujas, autoplay y
+  animaciones del modal.
+
+## Rendimiento
+
+- ~58 kB JS gzip + ~6 kB CSS gzip, cero librerías de animación/UI.
+- Fuentes woff2 subconjunto latin auto-hospedadas (`font-display: swap`).
+- `content-visibility: auto` por sección y pausa total de animaciones de la
+  escena cuando la pestaña está oculta (`IntersectionObserver` +
+  `visibilitychange`).
+- `backdrop-filter` reducido a 8 px en pantallas ≤768 px; HUD oculto en
+  pantallas de altura ≤720 px.
+
+## Calidad: lint, tests y Lighthouse CI
+
+```bash
+npm run lint          # ESLint con react, react-hooks y jsx-a11y
+npm run format        # Prettier
+npm test              # Vitest: 8 unitarios (zonas, HUD, scroll)
+npm run test:e2e      # Playwright: 6 flujos de la ruta crítica
+```
+
+- **Pre-commit**: Husky + lint-staged (eslint --fix + prettier sobre lo
+  stageado).
+- **Lighthouse CI** corre en cada deploy; el pipeline **falla** si
+  Performance < 80 o Accessibility < 85.
 
 ## Desarrollo local
 
 ```bash
+git clone https://github.com/carlos1290/portafolio.git
+cd portafolio
 npm install
 npm run dev        # http://localhost:5173/portafolio/
-npm run build      # genera dist/
-npm run preview    # sirve el build
+npm run build      # genera dist/ (no se versiona: lo produce la CI)
+npm run preview    # sirve el build en http://localhost:4173/portafolio/
 ```
+
+Requiere Node ≥ 20 (ver `engines`).
 
 ## Despliegue continuo con GitHub Pages
 
-`.github/workflows/deploy-pages.yml` se ejecuta en **cada push a `main`**:
+`.github/workflows/deploy.yml` se ejecuta en **cada push a `main`** (y
+manualmente con `workflow_dispatch`):
 
-1. `npm ci` + `npm run build` (Node 20)
-2. `actions/configure-pages@v5` con `enablement: true` (crea el sitio Pages si no existe)
-3. `actions/upload-pages-artifact@v3` publica `dist/`
-4. `actions/deploy-pages@v4` despliega
+1. `npm ci` + `npm run build` (Node 20, caché de npm)
+2. **Lighthouse CI** — gate de calidad sobre el build servido en preview
+3. `actions/configure-pages@v5` con `enablement: true` (crea el sitio si no existe)
+4. `actions/upload-pages-artifact@v3` publica `dist/`
+5. `actions/deploy-pages@v4` despliega
 
-Requisitos del repo: **público** (plan gratuito) y Pages con *source*
-**GitHub Actions** (o dejar que `enablement: true` lo configure).
-Gracias a `base: '/portafolio/'` en `vite.config.js`, el sitio funciona bajo
-la ruta `/portafolio/` tanto en el build como en el dev server local.
+Flujo de ramas: el desarrollo se acumula en **`develop`**; el deploy ocurre al
+fusionar a **`main`**.
 
 ## Personalización
 
-| Quiero cambiar… | Editar |
-|-----------------|--------|
-| Un proyecto de la pasarela | `src/data/projects.json` (título, rol, descripción, tags, `captura_o_demo`, enlaces, arquitectura, métricas) |
-| Una captura real | `captura_o_demo` en `projects.json` con una ruta (ej. `"/portafolio/img/proyecto.png"`, archivo en `public/img/`) |
-| Colores / tipografías | Bloque `:root` de `src/index.css` |
-| Velocidad del autoplay | `AUTOPLAY_MS` en `src/components/Projects.jsx` |
-| Profundidad de cada zona | `zone-marker` en cada componente + escala `p * 900` en `useScrollDepth.js` |
-| Mis datos de contacto | `src/components/Contact.jsx` (constantes `EMAIL` / `GMAIL_COMPOSE`) |
+| Quiero cambiar…            | Editar                                               |
+| -------------------------- | ---------------------------------------------------- |
+| Un proyecto de la pasarela | `src/data/projects.json` (ES y sus `_en`)            |
+| Una captura real           | `captura_o_demo` → archivo en `public/img/`          |
+| Textos de la interfaz      | `src/data/i18n.json` (es y en)                       |
+| Colores / tipografías      | Bloque `:root` de `src/index.css`                    |
+| Idioma por defecto         | `I18nProvider` en `src/hooks/useI18n.jsx`            |
+| Velocidad del autoplay     | `AUTOPLAY_MS` en `src/components/Projects.jsx`       |
+| Profundidad de cada zona   | `zone-marker` de cada sección + escala `p * 900`     |
+| Mis datos de contacto      | Constantes al inicio de `src/components/Contact.jsx` |
+| Umbrales de Lighthouse     | `.lighthouserc.json`                                 |
 
 ---
 

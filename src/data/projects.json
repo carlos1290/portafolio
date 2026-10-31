@@ -6,15 +6,35 @@
       "rol": "Desarrollador Jr. / Analista de datos",
       "descripcion": "Diseño y desarrollo de tableros de control interactivos en Power BI para la toma de decisiones empresariales a partir de encuestas y marcos muestrales depurados.",
       "habilidades_tecnicas": ["Power BI", "DAX", "SPSS", "Excel", "Depuración de datos"],
-      "captura_o_demo": null,
+      "captura_o_demo": "img/mock-dashboards.svg",
       "enlaces": {
         "demo": null,
         "codigo": null
       },
       "arquitectura": "Pipeline: bases de encuestas → depuración acumulativa en SPSS/Excel → modelo relacional → semáforos e interactividad en Power BI, publicado en workspace corporativo.",
       "metricas": [
-        { "valor": "100%", "label": "encuestas sistematizadas" },
-        { "valor": "Semanal", "label": "frecuencia de reportes" }
+        {
+          "valor": "100%",
+          "label": "encuestas sistematizadas"
+        },
+        {
+          "valor": "Semanal",
+          "label": "frecuencia de reportes"
+        }
+      ],
+      "titulo_en": "BI control dashboards",
+      "rol_en": "Junior developer / Data analyst",
+      "descripcion_en": "Design and development of interactive control dashboards in Power BI for decision making, built on cleansed survey and sampling-frame data.",
+      "arquitectura_en": "Pipeline: survey databases → cumulative cleansing in SPSS/Excel → relational model → traffic lights and interactivity in Power BI, published to a corporate workspace.",
+      "metricas_en": [
+        {
+          "valor": "100%",
+          "label": "systematized surveys"
+        },
+        {
+          "valor": "Weekly",
+          "label": "reporting frequency"
+        }
       ]
     },
     {
@@ -22,16 +42,42 @@
       "titulo": "Control de calidad georreferenciado",
       "rol": "Practicante técnico — QA de datos",
       "descripcion": "Sistema de verificación de encuestas mediante análisis de georreferenciación con Google Maps, detectando inconsistencias de campo y generando reportes detallados de testing.",
-      "habilidades_tecnicas": ["Google Maps", "QA", "Test Cases", "Reporte de bugs", "Google Sheets"],
-      "captura_o_demo": null,
+      "habilidades_tecnicas": [
+        "Google Maps",
+        "QA",
+        "Test Cases",
+        "Reporte de bugs",
+        "Google Sheets"
+      ],
+      "captura_o_demo": "img/mock-geo.svg",
       "enlaces": {
         "demo": null,
         "codigo": null
       },
       "arquitectura": "Coordenadas de campo → validación espacial contra marcos muestrales → marcado de outliers → informe de no conformidades para el equipo de campo.",
       "metricas": [
-        { "valor": "+300", "label": "casos auditados" },
-        { "valor": "1er paso", "label": "detección temprana de errores" }
+        {
+          "valor": "+300",
+          "label": "casos auditados"
+        },
+        {
+          "valor": "1er paso",
+          "label": "detección temprana de errores"
+        }
+      ],
+      "titulo_en": "Georeferenced quality control",
+      "rol_en": "Technical intern — data QA",
+      "descripcion_en": "Survey verification system based on georeferencing analysis with Google Maps, detecting field inconsistencies and producing detailed testing reports.",
+      "arquitectura_en": "Field coordinates → spatial validation against sampling frames → outlier flagging → non-conformity report for the field team.",
+      "metricas_en": [
+        {
+          "valor": "300+",
+          "label": "audited cases"
+        },
+        {
+          "valor": "First step",
+          "label": "early error detection"
+        }
       ]
     },
     {
@@ -39,16 +85,42 @@
       "titulo": "Portafolio iceberg inmersivo",
       "rol": "Frontend Developer (diseño y desarrollo)",
       "descripcion": "Portafolio con narrativa de buceo: un iceberg que se hunde con el scroll, HUD de profundidad y zonas oceánicas que revelan el CV. Este mismo sitio que estás viendo.",
-      "habilidades_tecnicas": ["React", "JavaScript", "CSS3", "Scroll-driven animation", "Accessibility"],
-      "captura_o_demo": null,
+      "habilidades_tecnicas": [
+        "React",
+        "JavaScript",
+        "CSS3",
+        "Scroll-driven animation",
+        "Accessibility"
+      ],
+      "captura_o_demo": "img/mock-portfolio.svg",
       "enlaces": {
         "demo": null,
         "codigo": "https://github.com/carlos1290/portafolio"
       },
       "arquitectura": "Vite + React sin dependencias de animación: una única variable CSS --p alimentada por rAF scroll listener gobierna la escena fija (olas, rayos, iceberg SVG) y el degradado de profundidad; reveals con IntersectionObserver y prefers-reduced-motion respetado.",
       "metricas": [
-        { "valor": "0", "label": "librerías de animación externas" },
-        { "valor": "~51 kB", "label": "JS gzip" }
+        {
+          "valor": "0",
+          "label": "librerías de animación externas"
+        },
+        {
+          "valor": "~51 kB",
+          "label": "JS gzip"
+        }
+      ],
+      "titulo_en": "Immersive iceberg portfolio",
+      "rol_en": "Frontend developer (design and build)",
+      "descripcion_en": "Portfolio with a diving narrative: an iceberg that sinks as you scroll, a depth HUD and oceanic zones revealing the CV. The very site you are looking at.",
+      "arquitectura_en": "Vite + React with no animation libraries: a single CSS variable --p fed by an rAF scroll listener drives the fixed scene (waves, rays, SVG iceberg) and the depth gradient; reveals via IntersectionObserver with prefers-reduced-motion respected.",
+      "metricas_en": [
+        {
+          "valor": "0",
+          "label": "external animation libraries"
+        },
+        {
+          "valor": "~54 kB",
+          "label": "JS gzip"
+        }
       ]
     },
     {
@@ -57,14 +129,27 @@
       "rol": "Estudiante desarrollador",
       "descripcion": "Proyectos prácticos del ecosistema web (React, HTML5, CSS3, JavaScript) desde la formación en Senpai Academy, incluyendo componentes interactivos y consumo de APIs.",
       "habilidades_tecnicas": ["React", "JavaScript", "HTML5", "CSS3"],
-      "captura_o_demo": null,
+      "captura_o_demo": "img/mock-webapp.svg",
       "enlaces": {
         "demo": null,
         "codigo": null
       },
       "arquitectura": "Componentización con React, estado local con hooks y estilos modulares.",
       "metricas": [
-        { "valor": "9 hrs", "label": "formación intensiva" }
+        {
+          "valor": "9 hrs",
+          "label": "formación intensiva"
+        }
+      ],
+      "titulo_en": "Web apps — applied training",
+      "rol_en": "Student developer",
+      "descripcion_en": "Hands-on projects from the web ecosystem (React, HTML5, CSS3, JavaScript) during Senpai Academy training, including interactive components and API consumption.",
+      "arquitectura_en": "Componentization with React, local state with hooks and modular styles.",
+      "metricas_en": [
+        {
+          "valor": "9 hrs",
+          "label": "intensive training"
+        }
       ]
     }
   ]

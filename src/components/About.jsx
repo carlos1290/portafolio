@@ -1,45 +1,32 @@
-const education = [
-  {
-    period: '2025 — actualidad',
-    title: 'Ingeniería en Computación',
-    place: 'UDELAR',
-  },
-  {
-    period: '2022 — 2025',
-    title: 'Bachillerato Tecnológico — TIC',
-    place: 'ÁNMA TEC',
-  },
-]
+import { useI18n } from '../hooks/useI18n.jsx'
 
 export default function About() {
+  const { t } = useI18n()
+
+  const education = [
+    { period: t('about.edu1period'), title: t('about.edu1title'), place: 'UDELAR' },
+    { period: t('about.edu2period'), title: t('about.edu2title'), place: 'ÁNMA TEC' },
+  ]
+
   return (
     <section className="zone" id="bitacora">
       <div className="container">
         <header className="zone-header" data-reveal>
-          <span className="zone-marker">−040 m · zona iluminada</span>
-          <h2 className="section-title">Bitácora de buceo</h2>
+          <span className="zone-marker">{t('about.marker')}</span>
+          <h2 className="section-title">{t('about.title')}</h2>
         </header>
         <div className="about-grid">
           <div className="glass panel" data-reveal>
-            <h3 className="panel-title">Quién soy</h3>
-            <p>
-              Soy un estudiante de ingeniería en computación con especial interés
-              en la <strong>optimización de sistemas</strong>. Me caracterizo por
-              mi adaptabilidad y mi capacidad de aprendizaje, con una actitud
-              proactiva y orientada al aprendizaje continuo.
-            </p>
-            <p>
-              Busco una oportunidad como junior donde pueda aplicar y desarrollar
-              mis conocimientos, adquirir experiencia profesional y seguir
-              creciendo en el área.
-            </p>
+            <h3 className="panel-title">{t('about.whoIAm')}</h3>
+            <p dangerouslySetInnerHTML={{ __html: t('about.p1') }} />
+            <p>{t('about.p2')}</p>
           </div>
           <div className="about-side">
-            <div className="about-photo" data-reveal aria-label="Foto de Carlos Gonzalez">
+            <div className="about-photo" data-reveal aria-label={t('about.photoLabel')}>
               CG
             </div>
             <div className="glass panel" data-reveal>
-              <h3 className="panel-title">Educación</h3>
+              <h3 className="panel-title">{t('about.education')}</h3>
               <ul className="edu-list">
                 {education.map((e) => (
                   <li key={e.title}>

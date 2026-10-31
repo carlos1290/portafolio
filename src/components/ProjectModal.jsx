@@ -1,9 +1,11 @@
 import { useEffect, useRef } from 'react'
+import { useI18n } from '../hooks/useI18n.jsx'
 
 const FOCUSABLE =
   'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
 
 export default function ProjectModal({ project, onClose }) {
+  const { t, lang } = useI18n()
   const closeRef = useRef(null)
   const modalRef = useRef(null)
   const openerRef = useRef(null)
@@ -53,6 +55,7 @@ export default function ProjectModal({ project, onClose }) {
   return (
     <div
       className="modal-backdrop"
+      role="presentation"
       onClick={(e) => e.target === e.currentTarget && onClose()}
     >
       <div
@@ -64,9 +67,9 @@ export default function ProjectModal({ project, onClose }) {
       >
         <header className="modal-header">
           <div>
-            <p className="project-role">{project.rol}</p>
+            <p className="project-role">{(lang === 'en' && project.rol_en) || project.rol}</p>
             <h3 id="modal-project-title" className="modal-title">
-              {project.titulo}
+              {(lang === 'en' && project.titulo_en) || project.titulo}
             </h3>
           </div>
           <button
@@ -74,7 +77,7 @@ export default function ProjectModal({ project, onClose }) {
             type="button"
             className="modal-close"
             onClick={onClose}
-            aria-label="Cerrar ficha del proyecto"
+            aria-label={t('modal.close')}
           >
             ✕
           </button>
@@ -82,23 +85,31 @@ export default function ProjectModal({ project, onClose }) {
 
         <div className="modal-body">
           <section>
-            <h4 className="modal-section-title">Resumen</h4>
-            <p>{project.descripcion}</p>
+            <h4 className="modal-section-title">{t('modal.summary')}</h4>
+            <p>{(lang === 'en' && project.descripcion_en) || project.descripcion}</p>
           </section>
 
           <section>
-            <h4 className="modal-section-title">Arquitectura empleada</h4>
-            <p>{project.arquitectura}</p>
+            <h4 className="modal-section-title">{t('modal.architecture')}</h4>
+            <p>{(lang === 'en' && project.arquitectura_en) || project.arquitectura}</p>
           </section>
 
           {project.metricas?.length > 0 && (
             <section>
-              <h4 className="modal-section-title">Métricas clave</h4>
+              <h4 className="modal-section-title">{t('modal.metrics')}</h4>
               <ul className="modal-metrics">
-                {project.metricas.map((m) => (
-                  <li key={m.label}>
+                {project.metricas.map((m, i) => (
+                  <li
+                    key={
+                      lang === 'en' && project.metricas_en ? project.metricas_en[i].label : m.label
+                    }
+                  >
                     <strong>{m.valor}</strong>
-                    <span>{m.label}</span>
+                    <span>
+                      {lang === 'en' && project.metricas_en
+                        ? project.metricas_en[i].label
+                        : m.label}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -106,7 +117,7 @@ export default function ProjectModal({ project, onClose }) {
           )}
 
           <section>
-            <h4 className="modal-section-title">Habilidades técnicas</h4>
+            <h4 className="modal-section-title">{t('modal.skills')}</h4>
             <div className="project-tags">
               {project.habilidades_tecnicas.map((t) => (
                 <span key={t}>{t}</span>
@@ -117,20 +128,27 @@ export default function ProjectModal({ project, onClose }) {
 
         <footer className="modal-footer">
           {project.enlaces?.demo && (
-            <a className="btn btn-dive" href={project.enlaces.demo} target="_blank" rel="noreferrer">
-              Ver demo en vivo ↗
+            <a
+              className="btn btn-dive"
+              href={project.enlaces.demo}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {t('modal.liveDemo')}
             </a>
           )}
           {project.enlaces?.codigo && (
-            <a className="btn btn-ghost" href={project.enlaces.codigo} target="_blank" rel="noreferrer">
-              Código fuente / Caso de estudio ↗
+            <a
+              className="btn btn-ghost"
+              href={project.enlaces.codigo}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {t('modal.caseStudy')}
             </a>
           )}
           {!project.enlaces?.demo && !project.enlaces?.codigo && (
-            <p className="modal-private">
-              Proyecto realizado en contexto laboral con datos confidenciales — demo
-              disponible a pedido.
-            </p>
+            <p className="modal-private">{t('modal.private')}</p>
           )}
         </footer>
       </div>

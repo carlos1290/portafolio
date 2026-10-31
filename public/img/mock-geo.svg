@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 340" font-family="Sora, sans-serif">
+  <rect width="720" height="340" fill="#0e1a24"/>
+  <!-- calles -->
+  <g stroke="#1d3242" stroke-width="10">
+    <path d="M0 90 H720 M0 210 H720 M120 0 V340 M320 0 V340 M520 0 V340"/>
+  </g>
+  <g stroke="#182a38" stroke-width="5">
+    <path d="M0 150 H720 M0 270 H720 M220 0 V340 M420 0 V340 M620 0 V340"/>
+  </g>
+  <path d="M0 320 Q 200 260 380 300 T 720 260" stroke="#14435c" stroke-width="26" fill="none" opacity="0.8"/>
+  <!-- cluster de puntos válidos -->
+  <g fill="#35e0d2" opacity="0.85">
+    <circle cx="250" cy="120" r="6"/><circle cx="270" cy="140" r="6"/><circle cx="290" cy="115" r="6"/>
+    <circle cx="310" cy="150" r="6"/><circle cx="260" cy="170" r="6"/><circle cx="300" cy="180" r="6"/>
+    <circle cx="330" cy="130" r="6"/><circle cx="280" cy="100" r="6"/>
+  </g>
+  <!-- outliers en rojo -->
+  <g>
+    <circle cx="560" cy="80" r="8" fill="#ff5f57"/><circle cx="120" cy="280" r="8" fill="#ff5f57"/><circle cx="640" cy="240" r="8" fill="#ff5f57"/>
+    <text x="560" y="60" fill="#ff8f89" font-size="11" text-anchor="middle">fuera de marco</text>
+    <text x="120" y="310" fill="#ff8f89" font-size="11" text-anchor="middle">fuera de marco</text>
+  </g>
+  <!-- panel lateral -->
+  <rect x="500" y="180" width="200" height="140" rx="10" fill="#0b1220" opacity="0.92"/>
+  <text x="516" y="206" fill="#7c8db0" font-size="11">AUDITORÍA GEO</text>
+  <text x="516" y="232" fill="#35e0d2" font-size="13">● 214 verificadas</text>
+  <text x="516" y="254" fill="#febc2e" font-size="13">● 9 dudosas</text>
+  <text x="516" y="276" fill="#ff5f57" font-size="13">● 3 fuera de marco</text>
+  <text x="516" y="302" fill="#7c8db0" font-size="10">Google Maps · georreferencia</text>
+  <rect x="20" y="20" width="230" height="34" rx="8" fill="#0b1220" opacity="0.92"/>
+  <text x="36" y="42" fill="#eaf6fb" font-size="13">Control de calidad de encuestas</text>
+</svg>

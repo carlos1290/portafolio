@@ -1,4 +1,15 @@
+import { useI18n } from '../hooks/useI18n.jsx'
+
 export default function ProjectCard({ project, onOpen, revealIndex }) {
+  const { t, lang } = useI18n()
+  const en = lang === 'en'
+  const titulo = en && project.titulo_en ? project.titulo_en : project.titulo
+  const rol = en && project.rol_en ? project.rol_en : project.rol
+  const descripcion = en && project.descripcion_en ? project.descripcion_en : project.descripcion
+  const img = project.captura_o_demo
+    ? `${import.meta.env.BASE_URL.replace(/\/$/, '')}/${project.captura_o_demo.replace(/^\//, '')}`
+    : null
+
   return (
     <article
       className="glass panel project-tile"
@@ -9,13 +20,13 @@ export default function ProjectCard({ project, onOpen, revealIndex }) {
         type="button"
         className="project-shot"
         onClick={() => onOpen(project)}
-        aria-label={`Abrir ficha completa de ${project.titulo}`}
+        aria-label={t('card.openTile', { titulo })}
       >
-        {project.captura_o_demo ? (
-          <img src={project.captura_o_demo} alt={`Captura de ${project.titulo}`} loading="lazy" />
+        {img ? (
+          <img src={img} alt={`Captura de ${titulo}`} loading="lazy" />
         ) : (
           <span className="project-shot--placeholder" aria-hidden="true">
-            {project.titulo
+            {titulo
               .split(' ')
               .slice(0, 2)
               .map((w) => w[0])
@@ -23,31 +34,38 @@ export default function ProjectCard({ project, onOpen, revealIndex }) {
               .toUpperCase()}
           </span>
         )}
-        <span className="project-shot__zoom" aria-hidden="true">⤢</span>
+        <span className="project-shot__zoom" aria-hidden="true">
+          ⤢
+        </span>
       </button>
 
-      <p className="project-role">{project.rol}</p>
-      <h3 className="project-title">{project.titulo}</h3>
-      <p className="project-desc">{project.descripcion}</p>
+      <p className="project-role">{rol}</p>
+      <h3 className="project-title">{titulo}</h3>
+      <p className="project-desc">{descripcion}</p>
 
       <div className="project-tags">
-        {project.habilidades_tecnicas.map((t) => (
-          <span key={t}>{t}</span>
+        {project.habilidades_tecnicas.map((tag) => (
+          <span key={tag}>{tag}</span>
         ))}
       </div>
 
       <div className="project-actions">
         <button type="button" className="link-chip" onClick={() => onOpen(project)}>
-          Ficha completa
+          {t('card.fullTile')}
         </button>
         {project.enlaces?.demo && (
-          <a className="link-chip link-chip--solid" href={project.enlaces.demo} target="_blank" rel="noreferrer">
-            Ver demo ↗
+          <a
+            className="link-chip link-chip--solid"
+            href={project.enlaces.demo}
+            target="_blank"
+            rel="noreferrer"
+          >
+            {t('card.demo')}
           </a>
         )}
         {project.enlaces?.codigo && (
           <a className="link-chip" href={project.enlaces.codigo} target="_blank" rel="noreferrer">
-            Código ↗
+            {t('card.code')}
           </a>
         )}
       </div>

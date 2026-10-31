@@ -1,11 +1,18 @@
 import { useEffect, useRef, useState } from 'react'
+import { useI18n } from '../hooks/useI18n.jsx'
+import { MailIcon, PhoneIcon, LinkedInIcon } from './Icons.jsx'
 
-const EMAIL = 'carlosdaniel.gonzalez390@gmail.com'
+// PII ensamblada en tiempo de ejecución: el HTML fuente no contiene la
+// dirección completa en texto plano (mitiga el scraping masivo de bots).
+const EMAIL = `${'carlosdaniel.gonzalez' + '390'}@${'gmail'}.${'com'}`
+const PHONE_DISPLAY = ['+598', '096', '293', '903'].join(' ')
+const PHONE_HREF = `tel:${'+598' + '096293903'}`
 const GMAIL_COMPOSE = `https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}`
 
 export default function Contact() {
   const [toast, setToast] = useState('')
   const timer = useRef(0)
+  const { t } = useI18n()
 
   useEffect(() => () => clearTimeout(timer.current), [])
 
@@ -15,21 +22,14 @@ export default function Contact() {
     timer.current = setTimeout(() => setToast(''), 2600)
   }
 
+  // La página se sirve por HTTPS (GitHub Pages): Clipboard API sin fallback
+  // obsoleto (WCAG 3.2 — execCommand eliminado).
   const copyEmail = async () => {
     try {
       await navigator.clipboard.writeText(EMAIL)
-      showToast('Correo copiado — Gmail se abre en otra pestaña ✉️')
+      showToast(t('contact.copied'))
     } catch {
-      const ta = document.createElement('textarea')
-      ta.value = EMAIL
-      ta.setAttribute('readonly', '')
-      ta.style.position = 'fixed'
-      ta.style.opacity = '0'
-      document.body.appendChild(ta)
-      ta.select()
-      const ok = document.execCommand('copy')
-      document.body.removeChild(ta)
-      showToast(ok ? 'Correo copiado — Gmail se abre en otra pestaña ✉️' : 'Gmail se abre en otra pestaña ✉️')
+      showToast(t('contact.opened'))
     }
   }
 
@@ -37,52 +37,44 @@ export default function Contact() {
     <section className="zone" id="contacto">
       <div className="container">
         <header className="zone-header" data-reveal>
-          <span className="zone-marker">−900 m · el abismo</span>
-          <h2 className="section-title">Fondo del océano</h2>
+          <span className="zone-marker">{t('contact.marker')}</span>
+          <h2 className="section-title">{t('contact.title')}</h2>
           <p className="zone-lead" data-reveal>
-            Llegaste hasta la base del iceberg. Si buscás un junior con curiosidad,
-            responsabilidad y espíritu positivo — esta es la señal.
+            {t('contact.lead')}
           </p>
         </header>
 
         <div className="contact-grid">
           <div className="contact-info" data-reveal>
             <div className="glass panel">
-              <h3 className="panel-title">Canal de comunicación</h3>
+              <h3 className="panel-title">{t('contact.channel')}</h3>
               <div className="contact-socials">
                 <a
                   href={GMAIL_COMPOSE}
                   target="_blank"
                   rel="noreferrer"
                   onClick={copyEmail}
-                  title="Copia el correo y abre Gmail en una pestaña nueva"
+                  title={t('contact.emailTitle')}
                 >
-                  <span aria-hidden="true">✉️</span> {EMAIL}
+                  <MailIcon /> {EMAIL}
                 </a>
-                <a href="tel:+59896293903">
-                  <span aria-hidden="true">📞</span> +598 096 293 903
+                <a href={PHONE_HREF}>
+                  <PhoneIcon /> {PHONE_DISPLAY}
                 </a>
                 <a
                   href="https://www.linkedin.com/in/carlosgonzalez-webdev"
                   target="_blank"
                   rel="noreferrer"
                 >
-                  <span aria-hidden="true">💼</span> linkedin.com/in/carlosgonzalez-webdev
+                  <LinkedInIcon /> linkedin.com/in/carlosgonzalez-webdev
                 </a>
               </div>
             </div>
             <div className="glass panel reference-card">
-              <h3 className="panel-title">Referencia</h3>
+              <h3 className="panel-title">{t('contact.reference')}</h3>
               <p className="reference-name">Santiago Peyrou</p>
-              <p className="reference-role">
-                Director del Laboratorio de Metodología de Equipos Consultores.
-                Tutor de Carlos (2023–2024).
-              </p>
-              <blockquote className="reference-quote">
-                «Su curiosidad y reflexividad lo llevan a buscar comprender e ir
-                más allá de las tareas concretas. Se desempeña con
-                responsabilidad, siempre con espíritu positivo y alegre.»
-              </blockquote>
+              <p className="reference-role">{t('contact.refRole')}</p>
+              <blockquote className="reference-quote">{t('contact.refQuote')}</blockquote>
             </div>
           </div>
 
@@ -94,45 +86,40 @@ export default function Contact() {
               const data = new FormData(e.currentTarget)
               const body = `${data.get('message')}\n\n— ${data.get('name')} (${data.get('email')})`
               window.open(
-                `${GMAIL_COMPOSE}&su=${encodeURIComponent('Hola Carlos — desde tu portafolio')}&body=${encodeURIComponent(body)}`,
+                `${GMAIL_COMPOSE}&su=${encodeURIComponent(t('contact.subject'))}&body=${encodeURIComponent(body)}`,
                 '_blank',
                 'noopener'
               )
             }}
           >
             <div>
-              <label htmlFor="name">Nombre</label>
+              <label htmlFor="name">{t('contact.name')}</label>
               <input
                 type="text"
                 id="name"
                 name="name"
-                placeholder="Tu nombre"
+                placeholder={t('contact.namePh')}
                 autoComplete="name"
                 required
               />
             </div>
             <div>
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">{t('contact.email')}</label>
               <input
                 type="email"
                 id="email"
                 name="email"
-                placeholder="tucorreo@ejemplo.com"
+                placeholder={t('contact.emailPh')}
                 autoComplete="email"
                 required
               />
             </div>
             <div>
-              <label htmlFor="message">Mensaje</label>
-              <textarea
-                id="message"
-                name="message"
-                placeholder="Escribe tu mensaje..."
-                required
-              />
+              <label htmlFor="message">{t('contact.message')}</label>
+              <textarea id="message" name="message" placeholder={t('contact.messagePh')} required />
             </div>
             <button type="submit" className="btn btn-dive">
-              Enviar señal al sonar
+              {t('contact.send')}
             </button>
           </form>
         </div>

@@ -1,3 +1,5 @@
+@import './assets/fonts.css';
+
 /* ============ Variables ============ */
 :root {
   --p: 0; /* progreso de scroll 0..1, actualizado por JS */
@@ -325,7 +327,7 @@ section {
 }
 
 .gauge__label {
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   letter-spacing: 0.22em;
   color: var(--text-muted);
 }
@@ -337,7 +339,7 @@ section {
 }
 
 .gauge__zone {
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   letter-spacing: 0.14em;
   color: var(--ice);
 }
@@ -392,6 +394,36 @@ section {
   color: var(--accent);
 }
 
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  white-space: nowrap;
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.lang-toggle:hover {
+  border-color: var(--accent);
+  background: rgba(53, 224, 210, 0.1);
+}
+
+.project-icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  color: var(--accent);
+  opacity: 0.9;
+}
+
 .nav-toggle {
   display: none;
   background: transparent;
@@ -419,7 +451,7 @@ section {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   margin-bottom: 1.25rem;
 }
 
@@ -456,7 +488,10 @@ section {
   padding: 0.8rem 1.6rem;
   border-radius: 999px;
   font-weight: 600;
-  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease,
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
     box-shadow 0.2s ease;
 }
 
@@ -471,7 +506,9 @@ section {
 .btn-dive:hover {
   background: #06303d;
   transform: translateY(-2px);
-  box-shadow: 0 14px 36px rgba(2, 20, 30, 0.5), 0 0 24px rgba(53, 224, 210, 0.25);
+  box-shadow:
+    0 14px 36px rgba(2, 20, 30, 0.5),
+    0 0 24px rgba(53, 224, 210, 0.25);
 }
 
 .btn-outline {
@@ -512,7 +549,7 @@ section {
   align-items: center;
   gap: 0.5rem;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--accent-ink);
@@ -554,7 +591,7 @@ section {
 .zone-marker {
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--accent);
@@ -571,16 +608,48 @@ section {
   margin-top: 0.75rem;
 }
 
-/* Reveal al entrar en pantalla */
-[data-reveal] {
+/* Reveal al entrar en pantalla — solo si hay JS activo; sin JS todo visible */
+.js [data-reveal] {
   opacity: 0;
   transform: translateY(28px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
 }
 
-[data-reveal].is-visible {
+.js [data-reveal].is-visible {
   opacity: 1;
   transform: none;
+}
+
+/* Panel de respaldo sin JavaScript */
+.noscript-panel {
+  max-width: 720px;
+  margin: 5rem auto;
+  padding: 2rem 1.5rem;
+  color: #04222b;
+  font-family: 'Sora', sans-serif;
+  line-height: 1.7;
+}
+
+.noscript-panel h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+}
+
+.noscript-panel ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin: 1rem 0;
+}
+
+.noscript-panel li {
+  margin-bottom: 0.5rem;
+}
+
+.noscript-panel a {
+  color: #0a5f7a;
+  font-weight: 600;
 }
 
 /* ============ Sobre mí ============ */
@@ -644,7 +713,7 @@ section {
 
 .edu-period {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   letter-spacing: 0.08em;
   color: var(--accent);
 }
@@ -676,7 +745,10 @@ section {
   background: rgba(53, 224, 210, 0.08);
   border: 1px solid var(--glass-border);
   color: var(--ice);
-  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease,
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease,
     box-shadow 0.2s ease;
 }
 
@@ -698,7 +770,9 @@ section {
 }
 
 .course-card {
-  transition: transform 0.25s ease, border-color 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .course-card:hover {
@@ -736,7 +810,7 @@ section {
 
 .exp-badge {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--accent-ink);
@@ -753,7 +827,9 @@ section {
 
 .project-card {
   overflow: hidden;
-  transition: transform 0.25s ease, border-color 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
   padding: 0;
 }
 
@@ -796,7 +872,7 @@ section {
 
 .project-tags span {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   padding: 0.2rem 0.6rem;
   border-radius: 999px;
   background: rgba(2, 12, 24, 0.5);
@@ -930,7 +1006,9 @@ section {
 
 .gallery-slide--on .project-tile {
   border-color: var(--accent);
-  box-shadow: 0 18px 50px rgba(1, 12, 24, 0.45), 0 0 26px rgba(53, 224, 210, 0.18);
+  box-shadow:
+    0 18px 50px rgba(1, 12, 24, 0.45),
+    0 0 26px rgba(53, 224, 210, 0.18);
 }
 
 .gallery-slide .project-tile {
@@ -939,13 +1017,18 @@ section {
   flex-direction: column;
   padding: 0 0 1.5rem;
   overflow: hidden;
-  transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+  transition:
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease;
 }
 
 .gallery-slide .project-tile:hover {
   transform: translateY(-6px);
   border-color: var(--accent);
-  box-shadow: 0 18px 50px rgba(1, 12, 24, 0.5), 0 0 32px rgba(53, 224, 210, 0.22);
+  box-shadow:
+    0 18px 50px rgba(1, 12, 24, 0.5),
+    0 0 32px rgba(53, 224, 210, 0.22);
 }
 
 .project-shot {
@@ -989,7 +1072,9 @@ section {
   color: var(--accent);
   opacity: 0;
   transform: translateY(6px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
 }
 
 .project-shot:hover .project-shot__zoom,
@@ -1000,7 +1085,7 @@ section {
 
 .project-role {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--accent);
@@ -1029,7 +1114,7 @@ section {
 
 .link-chip {
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: 0.75rem;
   letter-spacing: 0.04em;
   padding: 0.4rem 0.85rem;
   border-radius: 999px;
@@ -1037,7 +1122,10 @@ section {
   background: rgba(2, 12, 24, 0.4);
   color: var(--accent);
   cursor: pointer;
-  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .link-chip:hover,
@@ -1072,7 +1160,10 @@ section {
   line-height: 1;
   cursor: pointer;
   backdrop-filter: blur(8px);
-  transition: opacity 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .gallery-nav:hover:not(:disabled) {
@@ -1080,8 +1171,12 @@ section {
   transform: scale(1.08);
 }
 
-.gallery-nav--prev { left: max(0.5rem, calc((100vw - var(--container)) / 2 - 0.75rem)); }
-.gallery-nav--next { right: max(0.5rem, calc((100vw - var(--container)) / 2 - 0.75rem)); }
+.gallery-nav--prev {
+  left: max(0.5rem, calc((100vw - var(--container)) / 2 - 0.75rem));
+}
+.gallery-nav--next {
+  right: max(0.5rem, calc((100vw - var(--container)) / 2 - 0.75rem));
+}
 
 .gallery-nav:disabled {
   opacity: 0.25;
@@ -1100,7 +1195,10 @@ section {
   height: 8px;
   border-radius: 50%;
   background: rgba(234, 249, 255, 0.25);
-  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .gallery-dot--on {
@@ -1178,7 +1276,9 @@ section {
   color: var(--text);
   font-size: 0.95rem;
   cursor: pointer;
-  transition: border-color 0.2s ease, color 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .modal-close:hover {
@@ -1198,7 +1298,7 @@ section {
 
 .modal-section-title {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--accent);
@@ -1258,8 +1358,6 @@ section {
 
 /* ============ Toast + copiar correo ============ */
 
-
-
 .toast {
   position: fixed;
   left: 50%;
@@ -1273,10 +1371,14 @@ section {
   font-weight: 600;
   padding: 0.7rem 1.4rem;
   border-radius: 999px;
-  box-shadow: 0 12px 40px rgba(1, 12, 24, 0.5), 0 0 24px rgba(53, 224, 210, 0.35);
+  box-shadow:
+    0 12px 40px rgba(1, 12, 24, 0.5),
+    0 0 24px rgba(53, 224, 210, 0.35);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
 }
 
 .toast--show {
@@ -1298,6 +1400,30 @@ section {
   color: var(--text-muted);
   font-size: 0.85rem;
   font-family: var(--font-mono);
+}
+
+/* HUD oculto en pantallas de poca altura (3.4): no tapa contenido */
+@media (max-height: 720px) {
+  .gauge {
+    display: none;
+  }
+}
+
+/* ============ Optimización GPU (3.1) ============ */
+/* Escena fuera de viewport o pestaña oculta: ninguna animación consume GPU */
+.scene-offscreen .wave,
+.scene-offscreen .ocean__rays,
+.scene-offscreen .ocean__iceberg,
+.scene-offscreen .bubble,
+.scene-offscreen .particle,
+.scene-offscreen .scroll-hint__line {
+  animation-play-state: paused;
+}
+
+/* Secciones fuera de pantalla: el navegador salta layout/paint */
+.zone {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 90vh;
 }
 
 /* ============ Reduced motion ============ */
@@ -1349,6 +1475,11 @@ section {
 }
 
 @media (max-width: 768px) {
+  .glass {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
   .nav-toggle {
     display: block;
   }
@@ -1375,6 +1506,10 @@ section {
     border-top: 1px solid var(--glass-border);
   }
 
+  .lang-toggle {
+    margin: 1rem 1.5rem;
+  }
+
   .zone {
     padding: 6rem 0;
   }
@@ -1384,8 +1519,12 @@ section {
     height: 38px;
   }
 
-  .gallery-nav--prev { left: 0.25rem; }
-  .gallery-nav--next { right: 0.25rem; }
+  .gallery-nav--prev {
+    left: 0.25rem;
+  }
+  .gallery-nav--next {
+    right: 0.25rem;
+  }
 
   .gauge__track {
     height: 90px;

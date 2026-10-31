@@ -1,5 +1,5 @@
 const BUBBLES = Array.from({ length: 16 }, (_, i) => {
-  const seed = (n) => ((Math.sin(i * 12.9898 + n * 78.233) * 43758.5453) % 1 + 1) % 1
+  const seed = (n) => (((Math.sin(i * 12.9898 + n * 78.233) * 43758.5453) % 1) + 1) % 1
   return {
     left: 4 + seed(1) * 92,
     size: 4 + seed(2) * 10,
@@ -10,7 +10,7 @@ const BUBBLES = Array.from({ length: 16 }, (_, i) => {
 })
 
 const PARTICLES = Array.from({ length: 24 }, (_, i) => {
-  const seed = (n) => ((Math.sin(i * 4.13 + n * 91.7) * 24634.6345) % 1 + 1) % 1
+  const seed = (n) => (((Math.sin(i * 4.13 + n * 91.7) * 24634.6345) % 1) + 1) % 1
   return {
     left: seed(1) * 100,
     top: seed(2) * 100,
@@ -105,10 +105,7 @@ export default function Ocean() {
             strokeWidth="2"
           />
           {/* punta visible (el 10%) */}
-          <polygon
-            points="300,30 372,170 460,250 140,250 218,150"
-            fill="url(#ice-top)"
-          />
+          <polygon points="300,30 372,170 460,250 140,250 218,150" fill="url(#ice-top)" />
           <polygon points="300,30 372,170 460,250 300,250" fill="#8fc7e3" opacity="0.85" />
           <polyline
             points="300,30 288,250"

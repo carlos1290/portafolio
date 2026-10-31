@@ -1,0 +1,292 @@
+{
+  "es": {
+    "nav": {
+      "surface": "Superficie",
+      "log": "Bitácora",
+      "arsenal": "Arsenal",
+      "projects": "Proyectos",
+      "mission": "Misión",
+      "contact": "Contacto",
+      "openMenu": "Abrir menú",
+      "closeMenu": "Cerrar menú",
+      "mainNav": "Navegación principal",
+      "switchLang": "Switch to English",
+      "switchLangShort": "EN"
+    },
+    "hero": {
+      "eyebrow": "0 m · en la superficie",
+      "subtitle": "Estudiante de Ingeniería en Computación · Desarrollador Web Jr. / QA. Lo que ves aquí es solo el 10% del iceberg. Sigue bajando.",
+      "dive": "Sumergirme ↓",
+      "downloadCv": "Descargar CV (PDF)",
+      "contact": "Contacto",
+      "scrollHint": "bucea"
+    },
+    "about": {
+      "marker": "−040 m · zona iluminada",
+      "title": "Bitácora de buceo",
+      "whoIAm": "Quién soy",
+      "p1": "Soy un estudiante de ingeniería en computación con especial interés en la <strong>optimización de sistemas</strong>. Me caracterizo por mi adaptabilidad y mi capacidad de aprendizaje, con una actitud proactiva y orientada al aprendizaje continuo.",
+      "p2": "Busco una oportunidad como junior donde pueda aplicar y desarrollar mis conocimientos, adquirir experiencia profesional y seguir creciendo en el área.",
+      "photoLabel": "Foto de Carlos Gonzalez",
+      "education": "Educación",
+      "edu1title": "Ingeniería en Computación",
+      "edu2title": "Bachillerato Tecnológico — TIC",
+      "edu1period": "2025 — actualidad",
+      "edu2period": "2022 — 2025"
+    },
+    "skills": {
+      "marker": "−180 m · zona crepuscular",
+      "title": "El arsenal bajo el agua",
+      "lead": "La mayor parte de la masa no se ve desde la superficie. Estas son mis competencias técnicas, transversales y formaciones complementarias.",
+      "technical": "Competencias técnicas",
+      "soft": [
+        "Comunicación asertiva",
+        "Proactividad",
+        "Liderazgo",
+        "Resolución de problemas",
+        "Elaboración de reportes",
+        "Trabajo en equipo"
+      ],
+      "courses": [
+        {
+          "title": "Introducción al Desarrollo de Apps Web",
+          "desc": "Ecosistema web, React.js, HTML5, CSS3, JavaScript."
+        },
+        {
+          "title": "UX/UI y Quality Assurance — QA",
+          "desc": "Proceso de testing, elaboración de Test Cases, detección, reproducción y reporte de bugs."
+        },
+        {
+          "title": "Metodologías Ágiles — Marco SCRUM",
+          "desc": "Principios ágiles, roles de Scrum Master, gestión de Sprints, retrospectivas y mejora continua."
+        }
+      ]
+    },
+    "projects": {
+      "marker": "−280 m · zona de penumbra",
+      "title": "Pasarela de proyectos",
+      "lead": "Reliquias recuperadas de inmersiones anteriores. Flotan solas en bucle — usá las flechas para tomar el timón.",
+      "carouselLabel": "Galería de proyectos en bucle",
+      "carouselDesc": "carrusel",
+      "prev": "Proyecto anterior",
+      "next": "Proyecto siguiente",
+      "goTo": "Ir al proyecto {titulo}"
+    },
+    "card": {
+      "openTile": "Abrir ficha completa de {titulo}",
+      "fullTile": "Ficha completa",
+      "demo": "Ver demo ↗",
+      "code": "Código ↗"
+    },
+    "modal": {
+      "close": "Cerrar ficha del proyecto",
+      "summary": "Resumen",
+      "architecture": "Arquitectura empleada",
+      "metrics": "Métricas clave",
+      "skills": "Habilidades técnicas",
+      "liveDemo": "Ver demo en vivo ↗",
+      "caseStudy": "Código fuente / Caso de estudio ↗",
+      "private": "Proyecto realizado en contexto laboral con datos confidenciales — demo disponible a pedido."
+    },
+    "experience": {
+      "marker": "−450 m · zona de medianoche",
+      "title": "Expedición: Equipos Consultores",
+      "lead": "A esta profundidad la luz casi no llega — aquí es donde se hace el trabajo real.",
+      "role": "Desarrollador Web Jr. / Practicante Técnico",
+      "meta": "Equipos Consultores · 2023 — 2024",
+      "badge": "en inmersión",
+      "tasks": [
+        {
+          "title": "Procesamiento y depuración de datos",
+          "desc": "Depuración, acumulación y sistematización de bases de datos de encuestas y marcos muestrales empresariales."
+        },
+        {
+          "title": "Visualización y Business Intelligence",
+          "desc": "Diseño y desarrollo de tableros de control interactivos en Power BI para la toma de decisiones."
+        },
+        {
+          "title": "Análisis espacial y testing",
+          "desc": "Control de calidad de encuestas mediante análisis de georreferenciación (Google Maps) y reportes detallados de testing/cuestionarios."
+        }
+      ]
+    },
+    "contact": {
+      "marker": "−900 m · el abismo",
+      "title": "Fondo del océano",
+      "lead": "Llegaste hasta la base del iceberg. Si buscás un junior con curiosidad, responsabilidad y espíritu positivo — esta es la señal.",
+      "channel": "Canal de comunicación",
+      "emailTitle": "Copia el correo y abre Gmail en una pestaña nueva",
+      "reference": "Referencia",
+      "refRole": "Director del Laboratorio de Metodología de Equipos Consultores. Tutor de Carlos (2023–2024).",
+      "refQuote": "«Su curiosidad y reflexividad lo llevan a buscar comprender e ir más allá de las tareas concretas. Se desempeña con responsabilidad, siempre con espíritu positivo y alegre.»",
+      "name": "Nombre",
+      "namePh": "Tu nombre",
+      "email": "Email",
+      "emailPh": "tucorreo@ejemplo.com",
+      "message": "Mensaje",
+      "messagePh": "Escribe tu mensaje...",
+      "send": "Enviar señal al sonar",
+      "copied": "Correo copiado — Gmail se abre en otra pestaña",
+      "opened": "Gmail se abre en otra pestaña",
+      "subject": "Hola Carlos — desde tu portafolio"
+    },
+    "gauge": {
+      "label": "PROFUNDIDAD",
+      "zones": {
+        "surface": "SUPERFICIE",
+        "sunlight": "ZONA ILUMINADA",
+        "twilight": "ZONA CREPUSCULAR",
+        "midnight": "ZONA DE MEDIANOCHE",
+        "abyss": "EL ABISMO"
+      }
+    },
+    "footer": {
+      "line": "© {year} Carlos Gonzalez — bajo el 90%."
+    }
+  },
+  "en": {
+    "nav": {
+      "surface": "Surface",
+      "log": "Logbook",
+      "arsenal": "Arsenal",
+      "projects": "Projects",
+      "mission": "Mission",
+      "contact": "Contact",
+      "openMenu": "Open menu",
+      "closeMenu": "Close menu",
+      "mainNav": "Main navigation",
+      "switchLang": "Ver en español",
+      "switchLangShort": "ES"
+    },
+    "hero": {
+      "eyebrow": "0 m · at the surface",
+      "subtitle": "Computer Engineering student · Junior Web Developer / QA. What you see here is only 10% of the iceberg. Keep going down.",
+      "dive": "Dive in ↓",
+      "downloadCv": "Download CV (PDF)",
+      "contact": "Contact",
+      "scrollHint": "dive"
+    },
+    "about": {
+      "marker": "−040 m · sunlight zone",
+      "title": "Dive logbook",
+      "whoIAm": "Who I am",
+      "p1": "I am a computer engineering student with a special interest in <strong>systems optimization</strong>. I stand out for my adaptability and learning ability, with a proactive attitude oriented toward continuous learning.",
+      "p2": "I am looking for a junior opportunity where I can apply and grow my knowledge, gain professional experience and keep developing in the field.",
+      "photoLabel": "Photo of Carlos Gonzalez",
+      "education": "Education",
+      "edu1title": "Computer Engineering",
+      "edu2title": "Technical High School Diploma — ICT",
+      "edu1period": "2025 — present",
+      "edu2period": "2022 — 2025"
+    },
+    "skills": {
+      "marker": "−180 m · twilight zone",
+      "title": "The arsenal underwater",
+      "lead": "Most of the mass is invisible from the surface. These are my technical and soft skills, plus complementary training.",
+      "technical": "Technical skills",
+      "soft": [
+        "Assertive communication",
+        "Proactivity",
+        "Leadership",
+        "Problem solving",
+        "Report writing",
+        "Teamwork"
+      ],
+      "courses": [
+        {
+          "title": "Introduction to Web App Development",
+          "desc": "Web ecosystem, React.js, HTML5, CSS3, JavaScript."
+        },
+        {
+          "title": "UX/UI and Quality Assurance — QA",
+          "desc": "Testing process, Test Case authoring, bug detection, reproduction and reporting."
+        },
+        {
+          "title": "Agile Methodologies — SCRUM Framework",
+          "desc": "Agile principles, Scrum Master roles, Sprint management, retrospectives and continuous improvement."
+        }
+      ]
+    },
+    "projects": {
+      "marker": "−280 m · dusk zone",
+      "title": "Project gateway",
+      "lead": "Relics recovered from previous dives. They drift on their own in a loop — use the arrows to take the helm.",
+      "carouselLabel": "Looping project gallery",
+      "carouselDesc": "carousel",
+      "prev": "Previous project",
+      "next": "Next project",
+      "goTo": "Go to project {titulo}"
+    },
+    "card": {
+      "openTile": "Open full details of {titulo}",
+      "fullTile": "Full details",
+      "demo": "Live demo ↗",
+      "code": "Code ↗"
+    },
+    "modal": {
+      "close": "Close project details",
+      "summary": "Summary",
+      "architecture": "Architecture",
+      "metrics": "Key metrics",
+      "skills": "Technical skills",
+      "liveDemo": "View live demo ↗",
+      "caseStudy": "Source code / Case study ↗",
+      "private": "Project built in a work context with confidential data — demo available on request."
+    },
+    "experience": {
+      "marker": "−450 m · midnight zone",
+      "title": "Expedition: Equipos Consultores",
+      "lead": "At this depth light barely reaches — this is where the real work happens.",
+      "role": "Junior Web Developer / Technical Intern",
+      "meta": "Equipos Consultores · 2023 — 2024",
+      "badge": "diving",
+      "tasks": [
+        {
+          "title": "Data processing and cleansing",
+          "desc": "Cleansing, accumulation and systematization of survey databases and business sampling frames."
+        },
+        {
+          "title": "Visualization and Business Intelligence",
+          "desc": "Design and development of interactive control dashboards in Power BI for decision making."
+        },
+        {
+          "title": "Spatial analysis and testing",
+          "desc": "Survey quality control through georeferencing analysis (Google Maps) and detailed testing/questionnaire reports."
+        }
+      ]
+    },
+    "contact": {
+      "marker": "−900 m · the abyss",
+      "title": "Ocean floor",
+      "lead": "You reached the base of the iceberg. If you are looking for a curious, responsible and positive junior — this is the signal.",
+      "channel": "Communication channel",
+      "emailTitle": "Copies the email and opens Gmail in a new tab",
+      "reference": "Reference",
+      "refRole": "Director of the Methodology Laboratory at Equipos Consultores. Carlos' tutor (2023–2024).",
+      "refQuote": "“His curiosity and reflectiveness drive him to understand and go beyond concrete tasks. He performs with responsibility, always with a positive and cheerful spirit.”",
+      "name": "Name",
+      "namePh": "Your name",
+      "email": "Email",
+      "emailPh": "youremail@example.com",
+      "message": "Message",
+      "messagePh": "Write your message...",
+      "send": "Send signal to the sonar",
+      "copied": "Email copied — Gmail opens in another tab",
+      "opened": "Gmail opens in another tab",
+      "subject": "Hi Carlos — from your portfolio"
+    },
+    "gauge": {
+      "label": "DEPTH",
+      "zones": {
+        "surface": "SURFACE",
+        "sunlight": "SUNLIGHT ZONE",
+        "twilight": "TWILIGHT ZONE",
+        "midnight": "MIDNIGHT ZONE",
+        "abyss": "THE ABYSS"
+      }
+    },
+    "footer": {
+      "line": "© {year} Carlos Gonzalez — under the 90%."
+    }
+  }
+}

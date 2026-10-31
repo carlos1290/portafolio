@@ -1,21 +1,38 @@
 import { useEffect } from 'react'
+import messages from '../data/i18n.json'
 
 const ZONES = [
-  { min: 0, max: 12, name: 'SUPERFICIE' },
-  { min: 12, max: 90, name: 'ZONA ILUMINADA' },
-  { min: 90, max: 300, name: 'ZONA CREPUSCULAR' },
-  { min: 300, max: 650, name: 'ZONA DE MEDIANOCHE' },
-  { min: 650, max: Infinity, name: 'EL ABISMO' },
+  { min: 0, max: 12, key: 'surface' },
+  { min: 12, max: 90, key: 'sunlight' },
+  { min: 90, max: 300, key: 'twilight' },
+  { min: 300, max: 650, key: 'midnight' },
+  { min: 650, max: Infinity, key: 'abyss' },
 ]
 
-export function zoneName(meters) {
-  return ZONES.find((z) => meters >= z.min && meters <= z.max)?.name ?? ''
+export function zoneName(meters, lang = 'es') {
+  const key = ZONES.find((z) => meters >= z.min && meters < z.max)?.key
+  if (!key) return ''
+  return messages[lang]?.gauge?.zones?.[key] ?? messages.es.gauge.zones[key]
 }
 
 export function useScrollDepth() {
   useEffect(() => {
     const root = document.documentElement
     let raf = 0
+
+    // Pausa de animaciones: pestaña oculta o escena fuera del viewport.
+    // (3.1) Ahorro de GPU: burbujas/partículas/olas no consumen ciclos
+    // cuando nadie las ve.
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        root.classList.toggle('scene-offscreen', !entry.isIntersecting)
+      },
+      { threshold: 0 }
+    )
+    const scene = document.querySelector('.ocean')
+    if (scene) io.observe(scene)
+    const onVis = () => root.classList.toggle('scene-offscreen', document.hidden)
+    document.addEventListener('visibilitychange', onVis)
 
     const update = () => {
       raf = 0
@@ -27,10 +44,13 @@ export function useScrollDepth() {
       const readout = document.getElementById('gauge-depth')
       if (readout) readout.textContent = `−${String(meters).padStart(3, '0')} m`
       const zone = document.getElementById('gauge-zone')
-      if (zone) zone.textContent = zoneName(meters)
+      if (zone) zone.textContent = zoneName(meters, root.lang || 'es')
       const bar = document.getElementById('gauge-bar')
       if (bar) bar.style.height = `${(p * 100).toFixed(1)}%`
-      root.style.setProperty('--zone', meters >= 650 ? 'abyss' : meters >= 300 ? 'midnight' : 'shallow')
+      root.style.setProperty(
+        '--zone',
+        meters >= 650 ? 'abyss' : meters >= 300 ? 'midnight' : 'shallow'
+      )
     }
 
     const onScroll = () => {
@@ -38,12 +58,18 @@ export function useScrollDepth() {
     }
 
     update()
+    // Si cambia el idioma (atributo lang), refrescar el HUD sin esperar scroll
+    const langObs = new MutationObserver(update)
+    langObs.observe(root, { attributes: true, attributeFilter: ['lang'] })
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', onScroll)
     return () => {
       if (raf) cancelAnimationFrame(raf)
+      langObs.disconnect()
       window.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', onScroll)
+      document.removeEventListener('visibilitychange', onVis)
+      io.disconnect()
     }
   }, [])
 }

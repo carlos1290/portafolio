@@ -1,60 +1,56 @@
-const tasks = [
-  {
-    icon: '🗃',
-    title: 'Procesamiento y depuración de datos',
-    desc: 'Depuración, acumulación y sistematización de bases de datos de encuestas y marcos muestrales empresariales.',
-    tags: ['Data', 'SPSS', 'Excel'],
-  },
-  {
-    icon: '📊',
-    title: 'Visualización y Business Intelligence',
-    desc: 'Diseño y desarrollo de tableros de control interactivos en Power BI para la toma de decisiones.',
-    tags: ['Power BI', 'Dashboards'],
-  },
-  {
-    icon: '🗺',
-    title: 'Análisis espacial y testing',
-    desc: 'Control de calidad de encuestas mediante análisis de georreferenciación (Google Maps) y reportes detallados de testing/cuestionarios.',
-    tags: ['QA', 'Google Maps', 'Testing'],
-  },
-]
+import { useI18n } from '../hooks/useI18n.jsx'
+import { DatabaseIcon, ChartIcon, MapPinIcon } from './Icons.jsx'
+
+const taskIcons = [DatabaseIcon, ChartIcon, MapPinIcon]
 
 export default function Experience() {
+  const { t } = useI18n()
+  const tasks = t('experience.tasks')
+  const tags = [
+    ['Data', 'SPSS', 'Excel'],
+    ['Power BI', 'Dashboards'],
+    ['QA', 'Google Maps', 'Testing'],
+  ]
+
   return (
     <section className="zone" id="mision">
       <div className="container">
         <header className="zone-header" data-reveal>
-          <span className="zone-marker">−450 m · zona de medianoche</span>
-          <h2 className="section-title">Expedición: Equipos Consultores</h2>
+          <span className="zone-marker">{t('experience.marker')}</span>
+          <h2 className="section-title">{t('experience.title')}</h2>
           <p className="zone-lead" data-reveal>
-            A esta profundidad la luz casi no llega — aquí es donde se hace el
-            trabajo real.
+            {t('experience.lead')}
           </p>
         </header>
 
         <div className="exp-role glass panel" data-reveal>
           <div>
-            <h3 className="panel-title">Desarrollador Web Jr. / Practicante Técnico</h3>
-            <p className="exp-meta">Equipos Consultores · 2023 — 2024</p>
+            <h3 className="panel-title">{t('experience.role')}</h3>
+            <p className="exp-meta">{t('experience.meta')}</p>
           </div>
-          <span className="exp-badge">en inmersión</span>
+          <span className="exp-badge">{t('experience.badge')}</span>
         </div>
 
         <div className="projects-grid">
-          {tasks.map((t) => (
-            <article key={t.title} className="glass panel project-card" data-reveal>
-              <div className="project-img" aria-hidden="true">{t.icon}</div>
-              <div className="project-body">
-                <h3 className="project-title">{t.title}</h3>
-                <p className="project-desc">{t.desc}</p>
-                <div className="project-tags">
-                  {t.tags.map((tag) => (
-                    <span key={tag}>{tag}</span>
-                  ))}
+          {tasks.map((task, i) => {
+            const Icon = taskIcons[i]
+            return (
+              <article key={task.title} className="glass panel project-card" data-reveal>
+                <div className="project-img">
+                  <Icon className="project-icon" />
                 </div>
-              </div>
-            </article>
-          ))}
+                <div className="project-body">
+                  <h3 className="project-title">{task.title}</h3>
+                  <p className="project-desc">{task.desc}</p>
+                  <div className="project-tags">
+                    {tags[i].map((tag) => (
+                      <span key={tag}>{tag}</span>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            )
+          })}
         </div>
       </div>
     </section>

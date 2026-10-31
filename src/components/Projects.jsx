@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import projectsData from '../data/projects.json'
 import ProjectCard from './ProjectCard.jsx'
 import ProjectModal from './ProjectModal.jsx'
+import { useI18n } from '../hooks/useI18n.jsx'
 
 const AUTOPLAY_MS = 3500
 
@@ -10,6 +11,7 @@ export default function Projects() {
   const [selected, setSelected] = useState(null)
   const [index, setIndex] = useState(0)
   const [paused, setPaused] = useState(false)
+  const { t } = useI18n()
   const projects = projectsData.proyectos
   const n = projects.length
   const reduceMotion = useRef(false)
@@ -33,8 +35,8 @@ export default function Projects() {
 
   useEffect(() => {
     if (paused || reduceMotion.current) return
-    const t = setInterval(() => goTo(index + 1), AUTOPLAY_MS)
-    return () => clearInterval(t)
+    const timer = setInterval(() => goTo(index + 1), AUTOPLAY_MS)
+    return () => clearInterval(timer)
   }, [index, paused, goTo])
 
   useEffect(() => {
@@ -43,19 +45,14 @@ export default function Projects() {
     return () => document.removeEventListener('visibilitychange', onVis)
   }, [])
 
-  const manualNav = (dir) => {
-    goTo(index + dir)
-  }
-
   return (
     <section className="zone" id="proyectos">
       <div className="container">
         <header className="zone-header" data-reveal>
-          <span className="zone-marker">−280 m · zona de penumbra</span>
-          <h2 className="section-title">Pasarela de proyectos</h2>
+          <span className="zone-marker">{t('projects.marker')}</span>
+          <h2 className="section-title">{t('projects.title')}</h2>
           <p className="zone-lead" data-reveal>
-            Reliquias recuperadas de inmersiones anteriores. Flotan solas en
-            bucle — usá las flechas para tomar el timón.
+            {t('projects.lead')}
           </p>
         </header>
       </div>
@@ -71,8 +68,8 @@ export default function Projects() {
         <button
           type="button"
           className="gallery-nav gallery-nav--prev"
-          onClick={() => manualNav(-1)}
-          aria-label="Proyecto anterior"
+          onClick={() => goTo(index - 1)}
+          aria-label={t('projects.prev')}
         >
           ‹
         </button>
@@ -81,14 +78,11 @@ export default function Projects() {
           className="gallery-track"
           ref={trackRef}
           role="region"
-          aria-label="Galería de proyectos en bucle"
-          aria-roledescription="carrusel"
+          aria-label={t('projects.carouselLabel')}
+          aria-roledescription={t('projects.carouselDesc')}
         >
           {projects.map((p, i) => (
-            <li
-              key={p.id}
-              className={`gallery-slide ${i === index ? 'gallery-slide--on' : ''}`}
-            >
+            <li key={p.id} className={`gallery-slide ${i === index ? 'gallery-slide--on' : ''}`}>
               <ProjectCard project={p} onOpen={setSelected} revealIndex={i} />
             </li>
           ))}
@@ -97,17 +91,24 @@ export default function Projects() {
         <button
           type="button"
           className="gallery-nav gallery-nav--next"
-          onClick={() => manualNav(1)}
-          aria-label="Proyecto siguiente"
+          onClick={() => goTo(index + 1)}
+          aria-label={t('projects.next')}
         >
           ›
         </button>
       </div>
 
       <div className="container">
-        <div className="gallery-dots" aria-hidden="true">
+        <div className="gallery-dots">
           {projects.map((p, i) => (
-            <span key={p.id} className={`gallery-dot ${i === index ? 'gallery-dot--on' : ''}`} />
+            <button
+              key={p.id}
+              type="button"
+              className={`gallery-dot ${i === index ? 'gallery-dot--on' : ''}`}
+              aria-label={t('projects.goTo', { titulo: p.titulo })}
+              aria-current={i === index ? 'true' : undefined}
+              onClick={() => goTo(i)}
+            />
           ))}
         </div>
       </div>

@@ -1,0 +1,18 @@
+{
+  "ci": {
+    "collect": {
+      "url": ["http://localhost:4173/portafolio/"],
+      "startServerCommand": "npm run preview -- --port 4173 --strictPort",
+      "startServerReadyPattern": "localhost:4173",
+      "numberOfRuns": 1,
+      "settings": { "chromeFlags": "--no-sandbox --headless=new" }
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": ["error", { "minScore": 0.8 }],
+        "categories:accessibility": ["error", { "minScore": 0.85 }]
+      }
+    },
+    "upload": { "target": "filesystem", "outputDir": "./.lighthouseci" }
+  }
+}
