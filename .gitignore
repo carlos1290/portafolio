@@ -1,0 +1,16 @@
+# Dependencias
+node_modules/
+
+# Build de producción (generado por CI, ya no se rastrea)
+dist/
+
+# Logs y temporales
+*.log
+.DS_Store
+
+# Entorno local
+.env
+.env.local
+
+# Artefactos del agente
+.qoder/
