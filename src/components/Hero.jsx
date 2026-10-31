@@ -14,7 +14,14 @@ export default function Hero() {
           <a href="#bitacora" className="btn btn-dive">
             Sumergirme ↓
           </a>
-          <a href="#contacto" className="btn btn-outline">
+          <a
+            href={`${import.meta.env.BASE_URL}cv-carlos-gonzalez.pdf`}
+            className="btn btn-outline"
+            download="CV-Carlos-Gonzalez.pdf"
+          >
+            <span aria-hidden="true">⤓</span> Descargar CV (PDF)
+          </a>
+          <a href="#contacto" className="btn btn-ghost">
             Contacto
           </a>
         </div>

@@ -485,6 +485,23 @@ section {
   transform: translateY(-2px);
 }
 
+/* Terciario en la superficie: solo texto, sin borde — no compite con el CTA */
+.hero-actions .btn-ghost {
+  border: none;
+  color: rgba(4, 34, 43, 0.75);
+  background: transparent;
+  padding-inline: 0.5rem;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 5px;
+}
+
+.hero-actions .btn-ghost:hover {
+  color: var(--accent-ink);
+  text-decoration-color: var(--accent-ink);
+  transform: none;
+}
+
 .scroll-hint {
   position: absolute;
   bottom: 2rem;
