@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" font-family="Sora, 'Segoe UI', sans-serif">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a8dcf0"/>
+      <stop offset="1" stop-color="#cfeef5"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#45c2d8"/>
+      <stop offset="0.35" stop-color="#0e6a8f"/>
+      <stop offset="1" stop-color="#020810"/>
+    </linearGradient>
+    <linearGradient id="tip" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4fdff"/>
+      <stop offset="1" stop-color="#a8dcf0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="190" fill="url(#sky)"/>
+  <rect y="190" width="1200" height="440" fill="url(#sea)"/>
+
+  <!-- iceberg a la derecha -->
+  <g transform="translate(930,60) scale(1.15)">
+    <polygon points="14,-20 60,130 130,130 -60,130 -30,60" fill="url(#tip)" transform="translate(0,0) scale(0.9)"/>
+    <polygon points="14,-20 60,130 14,130" fill="#8fc7e3" transform="scale(0.9)"/>
+    <polygon points="-80,132 110,132 150,210 90,330 20,390 -60,320 -130,220" fill="#bfeefc" opacity="0.22"/>
+  </g>
+  <line x1="0" y1="190" x2="1200" y2="190" stroke="#eaf9ff" stroke-width="3" opacity="0.7"/>
+
+  <!-- textos -->
+  <text x="80" y="300" fill="#eaf9ff" font-size="72" font-weight="700" letter-spacing="-1">Carlos Gonzalez</text>
+  <text x="80" y="360" fill="#35e0d2" font-size="30" font-weight="600">Ingeniería en Computación · Dev Web Jr. / QA</text>
+  <text x="80" y="435" fill="rgba(214,238,248,0.85)" font-size="26">Lo que ves es solo el 10% del iceberg —</text>
+  <text x="80" y="472" fill="rgba(214,238,248,0.85)" font-size="26">sumergite en mi portafolio interactivo.</text>
+
+  <g font-size="22" fill="#9fe8f2">
+    <text x="80" y="548">React</text>
+    <text x="180" y="548">·</text>
+    <text x="210" y="548">JavaScript</text>
+    <text x="355" y="548">·</text>
+    <text x="385" y="548">Power BI</text>
+    <text x="510" y="548">·</text>
+    <text x="540" y="548">QA &amp; Testing</text>
+  </g>
+</svg>

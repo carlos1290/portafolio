@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0e6a8f"/>
+      <stop offset="1" stop-color="#02131f"/>
+    </linearGradient>
+    <linearGradient id="tip" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f4fdff"/>
+      <stop offset="1" stop-color="#a8dcf0"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#sea)"/>
+  <rect y="26" width="64" height="38" fill="#062f4a" opacity="0.85"/>
+  <!-- masa sumergida (90%) -->
+  <polygon points="14,27 50,27 55,36 46,50 36,58 24,52 10,40" fill="#bfeefc" opacity="0.28"/>
+  <!-- punta visible (10%) -->
+  <polygon points="32,8 44,27 20,27" fill="url(#tip)"/>
+  <polygon points="32,8 44,27 32,27" fill="#8fc7e3"/>
+  <line x1="0" y1="27" x2="64" y2="27" stroke="#7fe3ef" stroke-width="1.6" opacity="0.9"/>
+</svg>
