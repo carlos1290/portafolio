@@ -1345,6 +1345,64 @@ section {
   font-style: italic;
 }
 
+/* Selector de idioma del CV */
+.cv-modal {
+  width: min(480px, 100%);
+}
+
+.cv-modal-desc {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 0.35rem;
+}
+
+.cv-modal-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+
+.cv-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  background: rgba(53, 224, 210, 0.05);
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.cv-option:hover,
+.cv-option:focus-visible {
+  border-color: var(--accent);
+  background: rgba(53, 224, 210, 0.12);
+  transform: translateY(-2px);
+  box-shadow:
+    0 10px 26px rgba(1, 12, 24, 0.4),
+    0 0 18px rgba(53, 224, 210, 0.18);
+}
+
+.cv-option-lang {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ice);
+}
+
+.cv-option-file {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  text-align: right;
+}
+
 .btn-ghost {
   border: 1px solid var(--glass-border);
   color: var(--accent);

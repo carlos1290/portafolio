@@ -142,6 +142,11 @@
     },
     "footer": {
       "line": "© {year} Carlos Gonzalez — bajo el 90%."
+    },
+    "cvModal": {
+      "title": "Descargar CV",
+      "desc": "Elegí en qué idioma querés mi currículum:",
+      "close": "Cerrar selector de CV"
     }
   },
   "en": {
@@ -287,6 +292,11 @@
     },
     "footer": {
       "line": "© {year} Carlos Gonzalez — under the 90%."
+    },
+    "cvModal": {
+      "title": "Download CV",
+      "desc": "Choose the language for my resume:",
+      "close": "Close CV language picker"
     }
   }
 }

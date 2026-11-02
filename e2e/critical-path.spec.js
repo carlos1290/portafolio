@@ -61,12 +61,16 @@ test.describe('portafolio iceberg — ruta crítica', () => {
     await expect(page.locator('#gauge-label, .gauge__label')).toHaveText('DEPTH')
   })
 
-  test('el CV se descarga desde el Hero', async ({ page }) => {
+  test('el CV ofrece selector de idioma y descarga el elegido', async ({ page }) => {
     await page.goto('/')
+    await page.getByRole('button', { name: /Descargar CV/ }).click()
+    const picker = page.getByRole('dialog', { name: /Descargar CV/i })
+    await expect(picker).toBeVisible()
+    await expect(picker.getByRole('link', { name: /English/ })).toBeVisible()
     const [download] = await Promise.all([
       page.waitForEvent('download'),
-      page.getByRole('link', { name: /Descargar CV/ }).click(),
+      picker.getByRole('link', { name: /English/ }).click(),
     ])
-    expect(download.suggestedFilename()).toBe('CV-Carlos-Gonzalez.pdf')
+    expect(download.suggestedFilename()).toBe('CV-Carlos-Gonzalez-EN.pdf')
   })
 })

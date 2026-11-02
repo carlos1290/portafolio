@@ -1,8 +1,11 @@
+import { useState } from 'react'
 import { useI18n } from '../hooks/useI18n.jsx'
 import { DownloadIcon } from './Icons.jsx'
+import CvLangModal from './CvLangModal.jsx'
 
 export default function Hero() {
   const { t } = useI18n()
+  const [cvPicker, setCvPicker] = useState(false)
 
   return (
     <section className="hero" id="superficie">
@@ -20,13 +23,9 @@ export default function Hero() {
           <a href="#bitacora" className="btn btn-dive">
             {t('hero.dive')}
           </a>
-          <a
-            href={`${import.meta.env.BASE_URL}cv-carlos-gonzalez.pdf`}
-            className="btn btn-outline"
-            download="CV-Carlos-Gonzalez.pdf"
-          >
+          <button type="button" className="btn btn-outline" onClick={() => setCvPicker(true)}>
             <DownloadIcon /> {t('hero.downloadCv')}
-          </a>
+          </button>
           <a href="#contacto" className="btn btn-ghost">
             {t('hero.contact')}
           </a>
@@ -36,6 +35,7 @@ export default function Hero() {
         <span className="scroll-hint__line" />
         {t('hero.scrollHint')}
       </div>
+      {cvPicker && <CvLangModal onClose={() => setCvPicker(false)} />}
     </section>
   )
 }
