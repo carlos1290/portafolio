@@ -124,6 +124,43 @@
       ]
     },
     {
+      "id": "reloj-js",
+      "titulo": "Reloj.js — alarmas y tiempo",
+      "rol": "Frontend Developer (diseño y desarrollo)",
+      "descripcion": "Aplicación web de tiempo con reloj en formato 24/12 h, sistema de alarmas con repeticiones semanales, cronómetro con vueltas y temporizador configurable. Publicada en GitHub Pages.",
+      "habilidades_tecnicas": ["JavaScript", "HTML5", "CSS3", "Web Audio API", "LocalStorage"],
+      "captura_o_demo": "img/mock-clock.svg",
+      "enlaces": {
+        "demo": "https://carlos1290.github.io/RELOJ_JS/",
+        "codigo": "https://github.com/carlos1290/RELOJ_JS"
+      },
+      "arquitectura": "HTML, CSS y JavaScript puros sin dependencias ni frameworks: renderizado por módulos (reloj, alarmas, cronómetro, temporizador), tonos de alarma sintetizados con Web Audio API, persistencia del estado en LocalStorage, atajos de teclado 1–4, notificaciones del navegador y preferencias de tema, texto y formato horario.",
+      "metricas": [
+        {
+          "valor": "0",
+          "label": "dependencias externas"
+        },
+        {
+          "valor": "4 en 1",
+          "label": "reloj · alarmas · cronómetro · temporizador"
+        }
+      ],
+      "titulo_en": "Reloj.js — clock and time",
+      "rol_en": "Frontend developer (design and build)",
+      "descripcion_en": "Web time app with a 24/12-hour clock, an alarm system with weekly repeats, a lap stopwatch and a configurable countdown timer. Published on GitHub Pages.",
+      "arquitectura_en": "Pure HTML, CSS and JavaScript with no dependencies or frameworks: module-based rendering (clock, alarms, stopwatch, timer), alarm tones synthesized with the Web Audio API, state persisted in LocalStorage, keyboard shortcuts 1–4, browser notifications and theme, text and time-format preferences.",
+      "metricas_en": [
+        {
+          "valor": "0",
+          "label": "external dependencies"
+        },
+        {
+          "valor": "4 in 1",
+          "label": "clock · alarms · stopwatch · timer"
+        }
+      ]
+    },
+    {
       "id": "apps-web-senpai",
       "titulo": "Apps web — formación aplicada",
       "rol": "Estudiante desarrollador",
