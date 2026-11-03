@@ -8,6 +8,11 @@ animado que revela distintas capas de mi perfil profesional.
 
 ![Vista previa del portafolio](public/og-image.png)
 
+![Stack](https://img.shields.io/badge/React_18-%2B_Vite_5-f5a524)
+![Tests](https://img.shields.io/badge/tests-Vitest_·_Playwright-35e0d2)
+![Deploy](https://img.shields.io/badge/deploy-GitHub_Pages-CI_Lighthouse-success)
+![A11y](https://img.shields.io/badge/a11y-WCAG_2.2_AA-7c8db0)
+
 ---
 
 ## Índice
@@ -83,7 +88,7 @@ scroll ──▶ rAF ──▶ documentElement.style.setProperty('--p', 0..1)
 ├── index.html                           # SEO/OG/Twitter/canonical/CSP/JSON-LD + prerender
 ├── vite.config.js                       # base: '/portafolio/'
 ├── public/
-│   ├── cv-carlos-gonzalez.pdf           # CV descargable
+│   ├── cv-carlos-gonzalez.pdf / cv-carlos-gonzalez-en.pdf # CV descargable (ES/EN)
 │   ├── favicon.svg / favicon-32.png / apple-touch-icon.png
 │   ├── og-image.svg / og-image.png      # imagen social 1200×630
 │   ├── robots.txt / sitemap.xml / 404.html
@@ -105,14 +110,14 @@ scroll ──▶ rAF ──▶ documentElement.style.setProperty('--p', 0..1)
 
 ## Las zonas de profundidad
 
-| Zona               | Profundidad | Sección  | Contenido                               |
-| ------------------ | ----------- | -------- | --------------------------------------- |
-| Superficie         | 0 m         | Hero     | Presentación + descarga de CV           |
-| Zona iluminada     | −040 m      | Bitácora | Sobre mí + educación (UDELAR, ÁNMA TEC) |
-| Zona crepuscular   | −180 m      | Arsenal  | Competencias + formaciones              |
-| Zona de penumbra   | −280 m      | Pasarela | Carrusel de proyectos                   |
-| Zona de medianoche | −450 m      | Misión   | Equipos Consultores (BI, QA, geo)       |
-| El abismo          | −900 m      | Contacto | Contacto + referencia profesional       |
+| Zona               | Profundidad | Sección  | Contenido                                                |
+| ------------------ | ----------- | -------- | -------------------------------------------------------- |
+| Superficie         | 0 m         | Hero     | Presentación + descarga de CV (elige ES/EN al descargar) |
+| Zona iluminada     | −040 m      | Bitácora | Sobre mí + educación (UDELAR, ÁNMA TEC)                  |
+| Zona crepuscular   | −180 m      | Arsenal  | Competencias + formaciones                               |
+| Zona de penumbra   | −280 m      | Pasarela | Carrusel de proyectos                                    |
+| Zona de medianoche | −450 m      | Misión   | Equipos Consultores (BI, QA, geo)                        |
+| El abismo          | −900 m      | Contacto | Contacto + referencia profesional                        |
 
 ## La pasarela de proyectos
 
@@ -126,6 +131,20 @@ scroll ──▶ rAF ──▶ documentElement.style.setProperty('--p', 0..1)
   activador (WCAG 2.4.3). Muestra resumen, arquitectura, métricas y enlaces.
 - **Capturas**: mockups SVG propios en `public/img/` referenciados desde
   `projects.json` (`captura_o_demo`); aceptan imágenes reales sin tocar código.
+
+### Fichas actuales
+
+| #   | Proyecto                                          | Demo / código                                                                                        |
+| --- | ------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| 1   | Tableros de control BI                            | —                                                                                                    |
+| 2   | Control de calidad georreferenciado               | —                                                                                                    |
+| 3   | Portafolio iceberg inmersivo (este sitio)         | [código](https://github.com/carlos1290/portafolio)                                                   |
+| 4   | **Reloj.js** — alarmas, cronómetro y temporizador | ✅ [demo](https://carlos1290.github.io/RELOJ_JS/) · [código](https://github.com/carlos1290/RELOJ_JS) |
+| 5   | Apps web — formación aplicada (Senpai)            | —                                                                                                    |
+
+Añadir un proyecto es solo agregar un objeto a `projects.json` (con sus
+campos `_en` para la traducción): la tarjeta, el modal, los dots y el
+autoplay se generan solos.
 
 ## Contacto
 
@@ -168,7 +187,7 @@ scroll ──▶ rAF ──▶ documentElement.style.setProperty('--p', 0..1)
 
 ## Rendimiento
 
-- ~58 kB JS gzip + ~6 kB CSS gzip, cero librerías de animación/UI.
+- ~60 kB JS gzip + ~5,5 kB CSS gzip, cero librerías de animación/UI.
 - Fuentes woff2 subconjunto latin auto-hospedadas (`font-display: swap`).
 - `content-visibility: auto` por sección y pausa total de animaciones de la
   escena cuando la pestaña está oculta (`IntersectionObserver` +
@@ -229,6 +248,7 @@ fusionar a **`main`**.
 | Velocidad del autoplay     | `AUTOPLAY_MS` en `src/components/Projects.jsx`       |
 | Profundidad de cada zona   | `zone-marker` de cada sección + escala `p * 900`     |
 | Mis datos de contacto      | Constantes al inicio de `src/components/Contact.jsx` |
+| CVs descargables           | `public/cv-carlos-gonzalez*.pdf` (ES/EN)             |
 | Umbrales de Lighthouse     | `.lighthouserc.json`                                 |
 
 ---
