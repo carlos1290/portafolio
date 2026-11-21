@@ -1199,6 +1199,18 @@ section {
 }
 
 .gallery-dot {
+  width: 24px;
+  height: 24px;
+  border: none;
+  padding: 0;
+  background: transparent;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.gallery-dot::after {
+  content: '';
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -1209,7 +1221,7 @@ section {
     box-shadow 0.3s ease;
 }
 
-.gallery-dot--on {
+.gallery-dot--on::after {
   background: var(--accent);
   transform: scale(1.35);
   box-shadow: 0 0 10px rgba(53, 224, 210, 0.6);

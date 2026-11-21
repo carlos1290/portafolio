@@ -110,6 +110,7 @@ export default function Projects() {
               className={`gallery-slide ${i === index ? 'gallery-slide--on' : ''}`}
               tabIndex={i === index ? 0 : -1}
               aria-hidden={i !== index}
+              inert={i !== index ? '' : undefined}
             >
               <ProjectCard project={p} onOpen={() => openProject(p)} revealIndex={i} />
             </li>
