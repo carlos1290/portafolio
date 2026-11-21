@@ -151,6 +151,10 @@
       "title": "Descargar CV",
       "desc": "Elegí en qué idioma querés mi currículum:",
       "close": "Cerrar selector de CV"
+    },
+    "meta": {
+      "title": "Carlos Gonzalez — Desarrollador Web Jr. & QA | Portafolio",
+      "description": "Portafolio de Carlos Gonzalez: desarrollador web junior y QA. Proyectos, competencias y contacto."
     }
   },
   "en": {
@@ -305,6 +309,10 @@
       "title": "Download CV",
       "desc": "Choose the language for my resume:",
       "close": "Close CV language picker"
+    },
+    "meta": {
+      "title": "Carlos Gonzalez — Junior Web Developer & QA | Portfolio",
+      "description": "Portfolio of Carlos Gonzalez: junior web developer and QA. Projects, skills and contact."
     }
   }
 }
