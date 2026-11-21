@@ -62,7 +62,7 @@ export default function Skills() {
                 </span>
               ))}
             </div>
-            <h3 className="panel-title panel-title--spaced">{t('skills.soft')}</h3>
+            <h3 className="panel-title panel-title--spaced">{t('skills.softTitle')}</h3>
             <div className="skills-grid">
               {soft.map((s) => (
                 <span key={s} className="skill-badge skill-badge--soft">
