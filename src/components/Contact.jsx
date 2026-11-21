@@ -70,6 +70,7 @@ export default function Contact() {
                 </a>
               </div>
             </div>
+            <p className="contact-note">{t('contact.note')}</p>
             <div className="glass panel reference-card">
               <h3 className="panel-title">{t('contact.reference')}</h3>
               <p className="reference-name">Santiago Peyrou</p>

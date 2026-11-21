@@ -23,7 +23,11 @@ export default function ProjectCard({ project, onOpen, revealIndex }) {
         aria-label={t('card.openTile', { titulo })}
       >
         {img ? (
-          <img src={img} alt={`Captura de ${titulo}`} loading="lazy" />
+          <img
+            src={img}
+            alt={en ? `Screenshot of ${titulo}` : `Captura de ${titulo}`}
+            loading="lazy"
+          />
         ) : (
           <span className="project-shot--placeholder" aria-hidden="true">
             {titulo
@@ -44,7 +48,10 @@ export default function ProjectCard({ project, onOpen, revealIndex }) {
       <p className="project-desc">{descripcion}</p>
 
       <div className="project-tags">
-        {project.habilidades_tecnicas.map((tag) => (
+        {(en && project.habilidades_tecnicas_en
+          ? project.habilidades_tecnicas_en
+          : project.habilidades_tecnicas
+        ).map((tag) => (
           <span key={tag}>{tag}</span>
         ))}
       </div>

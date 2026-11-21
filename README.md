@@ -11,7 +11,7 @@ animado que revela distintas capas de mi perfil profesional.
 ![Stack](https://img.shields.io/badge/React_18-%2B_Vite_5-f5a524)
 ![Tests](https://img.shields.io/badge/tests-Vitest_·_Playwright-35e0d2)
 ![Deploy](https://img.shields.io/badge/deploy-GitHub_Pages-CI_Lighthouse-success)
-![A11y](https://img.shields.io/badge/a11y-WCAG_2.2_AA-7c8db0)
+![A11y](https://img.shields.io/badge/a11y-Lighthouse_92-7c8db0)
 
 ---
 
@@ -83,7 +83,7 @@ scroll ──▶ rAF ──▶ documentElement.style.setProperty('--p', 0..1)
 ```
 ├── .github/workflows/deploy.yml         # CI/CD → GitHub Pages + gate LHCI
 ├── .husky/pre-commit                    # lint-staged antes de cada commit
-├── .lighthouserc.json                   # umbrales perf ≥80 · a11y ≥85
+├── .lighthouserc.json                   # umbrales perf ≥90 · a11y ≥95 · BP/SEO ≥95
 ├── eslint.config.js / .prettierrc       # calidad de código
 ├── index.html                           # SEO/OG/Twitter/canonical/CSP/JSON-LD + prerender
 ├── vite.config.js                       # base: '/portafolio/'
@@ -172,16 +172,19 @@ autoplay se generan solos.
 
 ## Seguridad (CSP) y privacidad
 
-- Meta `Content-Security-Policy` estricta: `default-src 'self'`, sin
-  `connect-src`, sin third-parties (las fuentes son locales).
+- Meta `Content-Security-Policy`: `default-src 'self'`, sin third-parties
+  (las fuentes son locales). `frame-ancestors` solo puede aplicarse por HTTP
+  headers; GitHub Pages no permite headers personalizados, por lo que se
+  documenta como limitación.
 - Email y teléfono se ensamblan en tiempo de ejecución en `Contact.jsx`; el
   HTML fuente y el JSON-LD no contienen la PII completa en texto plano.
 
 ## Accesibilidad
 
-- WCAG 2.2 AA: foco visible, focus trap en modal con restauración de foco,
-  piso de fuente 0.75rem (zoom 200 %), HTML semántico, labels reales,
-  `aria-live` en el toast, iconos SVG `aria-hidden` junto a texto visible.
+- En progreso hacia WCAG 2.2 AA: foco visible, focus trap en modal con
+  restauración de foco, piso de fuente 0.75rem (zoom 200 %), HTML semántico,
+  labels reales, `aria-live` en el toast, iconos SVG `aria-hidden` junto a texto
+  visible. Lighthouse Accessibility actual: 92; objetivo: ≥95.
 - `prefers-reduced-motion` desactiva olas, rayos, burbujas, autoplay y
   animaciones del modal.
 
@@ -207,7 +210,7 @@ npm run test:e2e      # Playwright: 6 flujos de la ruta crítica
 - **Pre-commit**: Husky + lint-staged (eslint --fix + prettier sobre lo
   stageado).
 - **Lighthouse CI** corre en cada deploy; el pipeline **falla** si
-  Performance < 80 o Accessibility < 85.
+  Performance < 90, Accessibility < 95, Best Practices < 95 o SEO < 95.
 
 ## Desarrollo local
 
@@ -233,8 +236,8 @@ manualmente con `workflow_dispatch`):
 4. `actions/upload-pages-artifact@v3` publica `dist/`
 5. `actions/deploy-pages@v4` despliega
 
-Flujo de ramas: el desarrollo se acumula en **`develop`**; el deploy ocurre al
-fusionar a **`main`**.
+Flujo de ramas: se trabaja en ramas `fix/*` o `feat/*` y se fusiona a
+**`main`**; el deploy ocurre en cada push a `main`.
 
 ## Personalización
 

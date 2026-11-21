@@ -26,6 +26,13 @@ export function I18nProvider({ children }) {
     } catch {
       /* modo privado sin storage: se ignora */
     }
+
+    const meta = (messages[lang] && messages[lang].meta) || (messages.es && messages.es.meta)
+    if (meta && meta.title) document.title = meta.title
+    if (meta && meta.description) {
+      const desc = document.querySelector('meta[name="description"]')
+      if (desc) desc.setAttribute('content', meta.description)
+    }
   }, [lang])
 
   const toggle = useCallback(() => setLang((l) => (l === 'es' ? 'en' : 'es')), [])

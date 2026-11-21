@@ -7,7 +7,8 @@ describe('zoneName', () => {
     expect(zoneName(0, 'es')).toBe('SUPERFICIE')
     expect(zoneName(12, 'es')).toBe('ZONA ILUMINADA')
     expect(zoneName(90, 'es')).toBe('ZONA CREPUSCULAR')
-    expect(zoneName(300, 'es')).toBe('ZONA DE MEDIANOCHE')
+    expect(zoneName(280, 'es')).toBe('ZONA DE PENUMBRA')
+    expect(zoneName(300, 'es')).toBe('ZONA DE PENUMBRA')
     expect(zoneName(650, 'es')).toBe('EL ABISMO')
     expect(zoneName(900, 'es')).toBe('EL ABISMO')
   })
@@ -15,6 +16,7 @@ describe('zoneName', () => {
   it('traduce las zonas a inglés', () => {
     expect(zoneName(0, 'en')).toBe('SURFACE')
     expect(zoneName(50, 'en')).toBe('SUNLIGHT ZONE')
+    expect(zoneName(300, 'en')).toBe('DUSK ZONE')
     expect(zoneName(900, 'en')).toBe('THE ABYSS')
   })
 
@@ -25,7 +27,9 @@ describe('zoneName', () => {
   it('respeta los límites de zona (fronteras inclusivas por arriba)', () => {
     expect(zoneName(11, 'es')).toBe('SUPERFICIE')
     expect(zoneName(89, 'es')).toBe('ZONA ILUMINADA')
-    expect(zoneName(299, 'es')).toBe('ZONA CREPUSCULAR')
+    expect(zoneName(279, 'es')).toBe('ZONA CREPUSCULAR')
+    expect(zoneName(280, 'es')).toBe('ZONA DE PENUMBRA')
+    expect(zoneName(449, 'es')).toBe('ZONA DE PENUMBRA')
     expect(zoneName(649, 'es')).toBe('ZONA DE MEDIANOCHE')
   })
 })

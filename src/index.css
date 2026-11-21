@@ -695,6 +695,14 @@ section {
   font-weight: 800;
   color: var(--ice);
   box-shadow: 0 0 60px rgba(53, 224, 210, 0.25);
+  overflow: hidden;
+}
+
+.about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .edu-list li {
@@ -1191,6 +1199,18 @@ section {
 }
 
 .gallery-dot {
+  width: 24px;
+  height: 24px;
+  border: none;
+  padding: 0;
+  background: transparent;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.gallery-dot::after {
+  content: '';
   width: 8px;
   height: 8px;
   border-radius: 50%;
@@ -1201,7 +1221,7 @@ section {
     box-shadow 0.3s ease;
 }
 
-.gallery-dot--on {
+.gallery-dot--on::after {
   background: var(--accent);
   transform: scale(1.35);
   box-shadow: 0 0 10px rgba(53, 224, 210, 0.6);
@@ -1590,5 +1610,32 @@ section {
 
   .gauge__depth {
     font-size: 1.1rem;
+  }
+}
+
+/* ---------- Impresión ---------- */
+@media print {
+  .ocean,
+  .depth-gauge,
+  .navbar,
+  .scroll-hint,
+  .gallery-nav,
+  .gallery-pause,
+  .toast {
+    display: none !important;
+  }
+  body {
+    background: #ffffff;
+    color: #111111;
+  }
+  .zone,
+  .glass.panel {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #cccccc;
+  }
+  a {
+    color: #111111;
+    text-decoration: underline;
   }
 }

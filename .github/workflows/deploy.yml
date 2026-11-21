@@ -24,7 +24,14 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
+      - run: npm run lint
+      - run: npm run test -- --run
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+      - run: npm run test:e2e
       - run: npm run build
+      - name: Smoke de assets
+        run: node scripts/smoke-assets.mjs
       - name: Lighthouse CI (gate de rendimiento y accesibilidad)
         run: |
           npm install -g @lhci/cli@0.14.x

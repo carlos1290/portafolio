@@ -3,7 +3,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('./assets/fonts/IBMPlexMono-400.woff2') format('woff2');
+  src: url('./fonts/IBMPlexMono-400.woff2') format('woff2');
 }
 
 @font-face {
@@ -11,7 +11,7 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url('./assets/fonts/IBMPlexMono-500.woff2') format('woff2');
+  src: url('./fonts/IBMPlexMono-500.woff2') format('woff2');
 }
 
 @font-face {
@@ -19,7 +19,7 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url('./assets/fonts/IBMPlexMono-600.woff2') format('woff2');
+  src: url('./fonts/IBMPlexMono-600.woff2') format('woff2');
 }
 
 @font-face {
@@ -27,7 +27,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('./assets/fonts/Sora-400.woff2') format('woff2');
+  src: url('./fonts/Sora-400.woff2') format('woff2');
 }
 
 @font-face {
@@ -35,7 +35,7 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url('./assets/fonts/Sora-500.woff2') format('woff2');
+  src: url('./fonts/Sora-500.woff2') format('woff2');
 }
 
 @font-face {
@@ -43,7 +43,7 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url('./assets/fonts/Sora-600.woff2') format('woff2');
+  src: url('./fonts/Sora-600.woff2') format('woff2');
 }
 
 @font-face {
@@ -51,7 +51,7 @@
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url('./assets/fonts/Unbounded-500.woff2') format('woff2');
+  src: url('./fonts/Unbounded-500.woff2') format('woff2');
 }
 
 @font-face {
@@ -59,7 +59,7 @@
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url('./assets/fonts/Unbounded-700.woff2') format('woff2');
+  src: url('./fonts/Unbounded-700.woff2') format('woff2');
 }
 
 @font-face {
@@ -67,5 +67,5 @@
   font-style: normal;
   font-weight: 800;
   font-display: swap;
-  src: url('./assets/fonts/Unbounded-800.woff2') format('woff2');
+  src: url('./fonts/Unbounded-800.woff2') format('woff2');
 }

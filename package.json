@@ -13,7 +13,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
-    "prepare": "husky"
+    "prepare": "husky",
+    "verify": "npm run lint && npm run test -- --run && npm run build && npm run test:e2e"
   },
   "dependencies": {
     "react": "^18.3.1",
