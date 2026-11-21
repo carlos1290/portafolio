@@ -22,7 +22,7 @@
       "scrollHint": "bucea"
     },
     "about": {
-      "marker": "−040 m · zona iluminada",
+      "marker": "−130 m · zona iluminada",
       "title": "Bitácora de buceo",
       "whoIAm": "Quién soy",
       "p1": "Soy un estudiante de ingeniería en computación con especial interés en la <strong>optimización de sistemas</strong>. Me caracterizo por mi adaptabilidad y mi capacidad de aprendizaje, con una actitud proactiva y orientada al aprendizaje continuo.",
@@ -35,7 +35,7 @@
       "edu2period": "2022 — 2025"
     },
     "skills": {
-      "marker": "−180 m · zona crepuscular",
+      "marker": "−300 m · zona crepuscular",
       "title": "El arsenal bajo el agua",
       "lead": "La mayor parte de la masa no se ve desde la superficie. Estas son mis competencias técnicas, transversales y formaciones complementarias.",
       "technical": "Competencias técnicas",
@@ -64,7 +64,7 @@
       "softTitle": "Competencias transversales"
     },
     "projects": {
-      "marker": "−280 m · zona de penumbra",
+      "marker": "−500 m · zona de penumbra",
       "title": "Pasarela de proyectos",
       "lead": "Reliquias recuperadas de inmersiones anteriores. Flotan solas en bucle — usá las flechas para tomar el timón.",
       "carouselLabel": "Galería de proyectos en bucle",
@@ -92,7 +92,7 @@
       "private": "Proyecto realizado en contexto laboral con datos confidenciales — demo disponible a pedido."
     },
     "experience": {
-      "marker": "−450 m · zona de medianoche",
+      "marker": "−670 m · zona de medianoche",
       "title": "Expedición: Equipos Consultores",
       "lead": "A esta profundidad la luz casi no llega — aquí es donde se hace el trabajo real.",
       "role": "Desarrollador Web Jr. / Practicante Técnico",
@@ -114,7 +114,7 @@
       ]
     },
     "contact": {
-      "marker": "−900 m · el abismo",
+      "marker": "−840 m · el abismo",
       "title": "Fondo del océano",
       "lead": "Llegaste hasta la base del iceberg. Si buscás un junior con curiosidad, responsabilidad y espíritu positivo — esta es la señal.",
       "channel": "Canal de comunicación",
@@ -181,7 +181,7 @@
       "scrollHint": "dive"
     },
     "about": {
-      "marker": "−040 m · sunlight zone",
+      "marker": "−130 m · sunlight zone",
       "title": "Dive logbook",
       "whoIAm": "Who I am",
       "p1": "I am a computer engineering student with a special interest in <strong>systems optimization</strong>. I stand out for my adaptability and learning ability, with a proactive attitude oriented toward continuous learning.",
@@ -194,7 +194,7 @@
       "edu2period": "2022 — 2025"
     },
     "skills": {
-      "marker": "−180 m · twilight zone",
+      "marker": "−300 m · twilight zone",
       "title": "The arsenal underwater",
       "lead": "Most of the mass is invisible from the surface. These are my technical and soft skills, plus complementary training.",
       "technical": "Technical skills",
@@ -223,7 +223,7 @@
       "softTitle": "Soft skills"
     },
     "projects": {
-      "marker": "−280 m · dusk zone",
+      "marker": "−500 m · dusk zone",
       "title": "Project gateway",
       "lead": "Relics recovered from previous dives. They drift on their own in a loop — use the arrows to take the helm.",
       "carouselLabel": "Looping project gallery",
@@ -251,7 +251,7 @@
       "private": "Project built in a work context with confidential data — demo available on request."
     },
     "experience": {
-      "marker": "−450 m · midnight zone",
+      "marker": "−670 m · midnight zone",
       "title": "Expedition: Equipos Consultores",
       "lead": "At this depth light barely reaches — this is where the real work happens.",
       "role": "Junior Web Developer / Technical Intern",
@@ -273,7 +273,7 @@
       ]
     },
     "contact": {
-      "marker": "−900 m · the abyss",
+      "marker": "−840 m · the abyss",
       "title": "Ocean floor",
       "lead": "You reached the base of the iceberg. If you are looking for a curious, responsible and positive junior — this is the signal.",
       "channel": "Communication channel",
