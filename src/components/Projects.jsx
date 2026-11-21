@@ -13,7 +13,6 @@ export default function Projects() {
   const [index, setIndex] = useState(0)
   const [paused, setPaused] = useState(false)
   const [inView, setInView] = useState(true)
-  const [activeIndex, setActiveIndex] = useState(0)
   const { t } = useI18n()
   const projects = projectsData.proyectos
   const n = projects.length
@@ -30,7 +29,6 @@ export default function Projects() {
       const step = card ? card.getBoundingClientRect().width + 24 : el.clientWidth * 0.8
       el.scrollTo({ left: target * step, behavior: reduceMotion ? 'auto' : 'smooth' })
       setIndex(target)
-      setActiveIndex(target)
     },
     [n, reduceMotion]
   )
@@ -60,20 +58,13 @@ export default function Projects() {
     return () => document.removeEventListener('visibilitychange', onVis)
   }, [])
 
-  const openProject = useCallback((project, i) => {
-    setActiveIndex(i)
+  const openProject = useCallback((project) => {
     setSelected(project)
   }, [])
 
   const closeProject = useCallback(() => {
-    const active = activeIndex
     setSelected(null)
-    requestAnimationFrame(() => {
-      const slide = trackRef.current?.children?.[active]
-      const btn = slide?.querySelector('button.project-shot')
-      btn?.focus()
-    })
-  }, [activeIndex])
+  }, [])
 
   return (
     <section className="zone" id="proyectos">
@@ -120,7 +111,7 @@ export default function Projects() {
               tabIndex={i === index ? 0 : -1}
               aria-hidden={i !== index}
             >
-              <ProjectCard project={p} onOpen={() => openProject(p, i)} revealIndex={i} />
+              <ProjectCard project={p} onOpen={() => openProject(p)} revealIndex={i} />
             </li>
           ))}
         </ul>
