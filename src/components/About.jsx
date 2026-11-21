@@ -23,7 +23,11 @@ export default function About() {
           </div>
           <div className="about-side">
             <div className="about-photo" data-reveal aria-label={t('about.photoLabel')}>
-              CG
+              <img
+                src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/img/carlos-gonzalez.png`}
+                alt={t('about.photoLabel')}
+                loading="lazy"
+              />
             </div>
             <div className="glass panel" data-reveal>
               <h3 className="panel-title">{t('about.education')}</h3>

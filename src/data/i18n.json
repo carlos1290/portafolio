@@ -15,7 +15,7 @@
     },
     "hero": {
       "eyebrow": "0 m · en la superficie",
-      "subtitle": "Estudiante de Ingeniería en Computación · Desarrollador Web Jr. / QA. Lo que ves aquí es solo el 10% del iceberg. Sigue bajando.",
+      "subtitle": "Estudiante de Ingeniería en Computación · Desarrollador Web Jr. / QA. Disponible para roles junior (remoto o híbrido) · Montevideo, Uruguay. Lo que ves aquí es solo el 10% del iceberg: sigue bajando.",
       "dive": "Sumergirme ↓",
       "downloadCv": "Descargar CV (PDF)",
       "contact": "Contacto",
@@ -131,7 +131,8 @@
       "send": "Enviar señal al sonar",
       "copied": "Correo copiado — Gmail se abre en otra pestaña",
       "opened": "Gmail se abre en otra pestaña",
-      "subject": "Hola Carlos — desde tu portafolio"
+      "subject": "Hola Carlos — desde tu portafolio",
+      "note": "El botón abre Gmail en una pestaña nueva. Si preferís otro cliente, copiá el email o usá el enlace mailto."
     },
     "gauge": {
       "label": "PROFUNDIDAD",
@@ -173,7 +174,7 @@
     },
     "hero": {
       "eyebrow": "0 m · at the surface",
-      "subtitle": "Computer Engineering student · Junior Web Developer / QA. What you see here is only 10% of the iceberg. Keep going down.",
+      "subtitle": "Computer Engineering student · Junior Web Developer / QA. Available for junior roles (remote or hybrid) · Montevideo, Uruguay. What you see here is only 10% of the iceberg: keep diving.",
       "dive": "Dive in ↓",
       "downloadCv": "Download CV (PDF)",
       "contact": "Contact",
@@ -289,7 +290,8 @@
       "send": "Send signal to the sonar",
       "copied": "Email copied — Gmail opens in another tab",
       "opened": "Gmail opens in another tab",
-      "subject": "Hi Carlos — from your portfolio"
+      "subject": "Hi Carlos — from your portfolio",
+      "note": "The button opens Gmail in a new tab. If you prefer another client, copy the email or use the mailto link."
     },
     "gauge": {
       "label": "DEPTH",
