@@ -1600,3 +1600,30 @@ section {
     font-size: 1.1rem;
   }
 }
+
+/* ---------- Impresión ---------- */
+@media print {
+  .ocean,
+  .depth-gauge,
+  .navbar,
+  .scroll-hint,
+  .gallery-nav,
+  .gallery-pause,
+  .toast {
+    display: none !important;
+  }
+  body {
+    background: #ffffff;
+    color: #111111;
+  }
+  .zone,
+  .glass.panel {
+    break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #cccccc;
+  }
+  a {
+    color: #111111;
+    text-decoration: underline;
+  }
+}
