@@ -104,7 +104,11 @@ export default function ProjectModal({ project, onClose }) {
                       lang === 'en' && project.metricas_en ? project.metricas_en[i].label : m.label
                     }
                   >
-                    <strong>{m.valor}</strong>
+                    <strong>
+                      {lang === 'en' && project.metricas_en
+                        ? (project.metricas_en[i].valor ?? m.valor)
+                        : m.valor}
+                    </strong>
                     <span>
                       {lang === 'en' && project.metricas_en
                         ? project.metricas_en[i].label
@@ -119,7 +123,10 @@ export default function ProjectModal({ project, onClose }) {
           <section>
             <h4 className="modal-section-title">{t('modal.skills')}</h4>
             <div className="project-tags">
-              {project.habilidades_tecnicas.map((t) => (
+              {(lang === 'en' && project.habilidades_tecnicas_en
+                ? project.habilidades_tecnicas_en
+                : project.habilidades_tecnicas
+              ).map((t) => (
                 <span key={t}>{t}</span>
               ))}
             </div>

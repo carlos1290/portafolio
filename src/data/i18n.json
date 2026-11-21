@@ -71,7 +71,9 @@
       "carouselDesc": "carrusel",
       "prev": "Proyecto anterior",
       "next": "Proyecto siguiente",
-      "goTo": "Ir al proyecto {titulo}"
+      "goTo": "Ir al proyecto {titulo}",
+      "pause": "Pausar carrusel",
+      "play": "Reanudar carrusel"
     },
     "card": {
       "openTile": "Abrir ficha completa de {titulo}",
@@ -223,7 +225,9 @@
       "carouselDesc": "carousel",
       "prev": "Previous project",
       "next": "Next project",
-      "goTo": "Go to project {titulo}"
+      "goTo": "Go to project {titulo}",
+      "pause": "Pause carousel",
+      "play": "Resume carousel"
     },
     "card": {
       "openTile": "Open full details of {titulo}",
