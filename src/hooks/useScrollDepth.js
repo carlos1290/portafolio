@@ -4,8 +4,9 @@ import messages from '../data/i18n.json'
 const ZONES = [
   { min: 0, max: 12, key: 'surface' },
   { min: 12, max: 90, key: 'sunlight' },
-  { min: 90, max: 300, key: 'twilight' },
-  { min: 300, max: 650, key: 'midnight' },
+  { min: 90, max: 280, key: 'twilight' },
+  { min: 280, max: 450, key: 'penumbra' },
+  { min: 450, max: 650, key: 'midnight' },
   { min: 650, max: Infinity, key: 'abyss' },
 ]
 
@@ -49,7 +50,17 @@ export function useScrollDepth() {
       if (bar) bar.style.height = `${(p * 100).toFixed(1)}%`
       root.style.setProperty(
         '--zone',
-        meters >= 650 ? 'abyss' : meters >= 300 ? 'midnight' : 'shallow'
+        meters >= 650
+          ? 'abyss'
+          : meters >= 450
+            ? 'midnight'
+            : meters >= 280
+              ? 'penumbra'
+              : meters >= 90
+                ? 'twilight'
+                : meters >= 12
+                  ? 'sunlight'
+                  : 'surface'
       )
     }
 
@@ -61,11 +72,25 @@ export function useScrollDepth() {
     // Si cambia el idioma (atributo lang), refrescar el HUD sin esperar scroll
     const langObs = new MutationObserver(update)
     langObs.observe(root, { attributes: true, attributeFilter: ['lang'] })
+    const scrollToHash = () => {
+      const hash = window.location.hash
+      if (!hash) return
+      const target = document.querySelector(hash)
+      if (target) {
+        requestAnimationFrame(() => {
+          target.scrollIntoView({ block: 'start', behavior: 'instant' })
+        })
+      }
+    }
+    scrollToHash()
+    window.addEventListener('hashchange', scrollToHash)
+
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', onScroll)
     return () => {
       if (raf) cancelAnimationFrame(raf)
       langObs.disconnect()
+      window.removeEventListener('hashchange', scrollToHash)
       window.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', onScroll)
       document.removeEventListener('visibilitychange', onVis)

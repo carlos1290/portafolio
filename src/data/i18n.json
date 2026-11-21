@@ -138,7 +138,8 @@
         "sunlight": "ZONA ILUMINADA",
         "twilight": "ZONA CREPUSCULAR",
         "midnight": "ZONA DE MEDIANOCHE",
-        "abyss": "EL ABISMO"
+        "abyss": "EL ABISMO",
+        "penumbra": "ZONA DE PENUMBRA"
       }
     },
     "footer": {
@@ -289,7 +290,8 @@
         "sunlight": "SUNLIGHT ZONE",
         "twilight": "TWILIGHT ZONE",
         "midnight": "MIDNIGHT ZONE",
-        "abyss": "THE ABYSS"
+        "abyss": "THE ABYSS",
+        "penumbra": "DUSK ZONE"
       }
     },
     "footer": {
